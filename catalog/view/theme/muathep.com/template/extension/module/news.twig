@@ -1,51 +1,35 @@
-<div class="blog-mainhead">
+<div class="blog-sec">
    <div class="container">
-      <div class="row">
-         <div class="box megnorblog">
-            <div class="box-heading">{{heading_title}}</div>
-            <div class="box-content">
-               <div class="box-product  owl-carousel blogcarousel " id="blog-carousel">
-               	{% if all_news  %}
-               		{% for news in all_news %}
-                  <div class="blog-item">
-                     <div class="product-block">
-                        <div class="blog-left">
-                           <div class="blog-image">
-                              <img src="{{news.image}}" alt="{{news.title}}" title="{{news.title}}" class="img-thumbnail" />
-                              <p class="post_hover"><a class="icon zoom" title="Click to view Full Image " href="{{news.image}}" data-lightbox="example-set"><i class="fa fa-search-plus"></i> </a></p>
-                           </div>
-                        </div>
-                        <div class="blog-right">
-                           <h4><a href="{{news.view}}">{{news.title}}</a> </h4>
-                           <div class="date-time"> <i class="fa fa-calendar"></i>{{news.date_added}}</div>
-                           <div class="blog-desc"> {{news.description}}</div>
-                           <div class="read-more"> <a href="{{news.view}}">Chi Tiết</a> </div>
-                        </div>
+      <h2><span>{{heading_title}}</span></h2>
+      <p>Chúng tôi luôn luôn cập nhật tin tức ngành thép một cách nhanh chóng</p>
+      <ul>
+         <div id="owl-example" class="owl-carousel">
+            {% if all_news  %}
+               {% for news in all_news %}
+               <li>
+                  <a href="{{news.view}}"><img src="{{news.image}}" alt="{{news.title}}"/></a>
+                  <div class="blog_inner_c">
+                     <div class="bl_cont">
+                        <h4><a href="{{news.view}}">{{news.title}}</a></h4>
+                        <p>{{news.description}}</p>
                      </div>
                   </div>
-                  {% endfor %}
-                {% endif %}
-               </div>
-            </div>
+               </li>
+               {% endfor %}
+            {% endif %}
          </div>
-         <span class="blog_default_width" style="display:none; visibility:hidden"></span>
-      </div>
+      </ul>
    </div>
 </div>
+<script src="catalog/view/theme/muathep.com/js/jquery.flexslider.js"></script>
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/muathep.com/css/owl.carousel.css">
+<script src="catalog/view/theme/muathep.com/js/owl.carousel.js"></script>
+<script>
+   jQuery(document).ready(function() {
+      jQuery("#owl-example").owlCarousel({
+         responsive: true,
+         items:4
 
-<script type="text/javascript"><!--
-   $(document).ready(function(){
-   $('.blogcarousel').owlCarousel({
-      items: 2,
-      autoPlay: false,
-      singleItem: false,
-      navigation: true,
-      navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-      pagination: true,
-      itemsDesktop : [980,2],
-      itemsDesktopSmall:[979,1],
-      itemsTablet : [479,1]
-    });
-   });  
-
+      });    
+   });
 </script>
