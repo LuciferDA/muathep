@@ -12,4 +12,5 @@
 #
 config.php
 /image
+storage/cache/
 
