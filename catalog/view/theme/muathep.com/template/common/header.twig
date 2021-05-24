@@ -23,25 +23,29 @@
  
                   <!-- End Google Tag Manager -->
                   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-                  <title>Muathep.com | Địa chỉ cung cấp Thép chất lượng - uy tín</title>
-                  <meta property="og:title" content="Muathep.vn | Địa chỉ cung cấp Thép chất lượng - uy tín" />
-                  <meta property="og:image" content="catalog/view/theme/muathep.com/images/logo-main.png" />
-                  <meta property="og:image:secure_url" content="catalog/view/theme/muathep.com/images/logo-main.png"/>
-                  <meta name="keywords" content="Muathep.com" />
-                  <meta name="description" content="Muathep.com" />
+                  <title>{{title}}</title>
+                  <meta property="og:title" content="{{title}}" />
+                  <meta property="og:image" content="{{images}}" />
+                  <meta property="og:image:secure_url" content="{{images}}"/>
+                  {% if keywords %}
+                     <meta name="keywords" content= "{{keywords}}" />
+                  {% endif %}
+                  {% if description %}
+                  <meta name="description" content="{{description}}" />
+                  {% endif %}
                   <link rel="canonical" href="{{base}}" />
-                  <meta property="og:site_name" content="Trang thương mại về Sắt Thép" />
+                  <meta property="og:site_name" content="{{title}}" />
                   <meta property="og:type" content="e-commerce" />
-                  <meta property="og:url" content="https://muathep.ionsite.vn/" />
-                  <meta property="og:description" content="Nền tảng trực tuyến mua thép đầu tiên tại việt Nam" />
-                  <meta property="og:image:alt" content="Nền tảng trực tuyến mua thép đầu tiên tại việt Nam" />
+                  <meta property="og:url" content="{{base}}" />
+                  <meta property="og:description" content="{{description}}" />
+                  <meta property="og:image:alt" content="{{title}}" />
                   <meta property="og:updated_time" content="2021-05-19:27:48+05:30" />
                   <meta name="copyright" content="NhanLuat" />
                   <meta name="msnbot" content="INDEX, FOLLOW" />
                   <meta name="googlebot" content="INDEX, FOLLOW" />
                   <meta name="allow-search" content="yes" />
                   <meta name="revisit-after" content="daily" />
-                  <meta name="site" content="Buy steel online at steeloncall.com" />
+                  <meta name="site" content="{{description}}" />
                   <meta name="robots" content="INDEX,FOLLOW" />
                   <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0' >
                   <!--[if lt IE 7]>
