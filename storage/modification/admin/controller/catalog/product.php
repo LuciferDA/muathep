@@ -937,12 +937,14 @@ class ControllerCatalogProduct extends Controller {
 
 		foreach ($product_attributes as $product_attribute) {
 			$attribute_info = $this->model_catalog_attribute->getAttribute($product_attribute['attribute_id']);
-
+			$manufacturer = $this->model_catalog_manufacturer->getManufacturer($product_attribute['manufacturer_id']);
 			if ($attribute_info) {
 				$data['product_attributes'][] = array(
 					'attribute_id'                  => $product_attribute['attribute_id'],
 					'name'                          => $attribute_info['name'],
-					'product_attribute_description' => $product_attribute['product_attribute_description']
+					'manufacturer' 				    => $manufacturer['name'],
+					'manufacturer_id' 				    => $manufacturer['manufacturer_id'],
+					'price' 					    => $product_attribute['price']
 				);
 			}
 		}
