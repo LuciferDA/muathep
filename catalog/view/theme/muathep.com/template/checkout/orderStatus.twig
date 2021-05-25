@@ -1,0 +1,96 @@
+{{ header }}
+<div id="bodycon">
+  <div class="container   ">
+     <div class="main-container col1-layout">
+        <div class="contentBox contentWithSidebar productDetails" id="">
+          <div class="main">
+              <div class="col-main ">
+                 <div class="std">
+                    <p>
+                    <div class="container getquote getquotedetail">
+                       <h2 class="log-title">Chi tiết đơn báo giá : {{order_by_user.invoice_prefix}}</h2>
+                       <div id="data">
+                        <table>
+                            <tr>
+                                <td>Họ tên</td>
+                                <td>{{order_by_user.lastname}}</td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td>{{order_by_user.email}}</td>
+                            </tr>
+                            <tr>
+                                <td>Số điện thoại</td>
+                                <td>{{order_by_user.telephone}}</td>
+                            </tr>
+                            <tr>
+                                <td>Địa chỉ</td>
+                                <td>{{order_by_user.payment_address_1}}</td>
+                            </tr>
+                        </table>
+
+                        <table>
+
+                          <thead>
+                            <th>
+                              <tr>
+                               <td>Sản phẩm</td>
+                               <td>Mác thép / Nhà sản xuất</td>
+                               <td>Số lượng</td>
+                               <td>Đơn vị</td>
+                               <td>Đơn giá tạm tính</td>
+                              </tr>
+                            </th>
+                          </thead>
+
+                          <tbody>
+                            {% for product in products_order %}
+                              <tr>
+                                 <td>{{product.name}}</td>
+                                 <td>{{product.model}}</td>
+                                 <td>{{product.quantity}}</td>
+                                 <td>{{product.quantity}}</td>
+                                 <td>{{product.total}}</td>
+                              </th>
+                            {% endfor %}
+                          </tbody>
+
+                        </table>
+                        </div>
+
+                        <p class="cmsubmit input-box">
+                          <button class="btn_dowload_pdf" id="gpdf">Tải xuống pdf</button>
+                        </p>
+                    </div>
+                    </p>
+                 </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>       
+
+jQuery("#gpdf").click(function(e){
+  var pdfdoc = new jsPDF();
+  var specialElementHandlers = {
+  '#ignoreContent': function (element, renderer) {
+      return true;
+    }
+  };
+  pdfdoc.fromHTML($j('#data').html(),10,10,{
+
+  'width': 110,
+
+  'elementHandlers': specialElementHandlers
+  
+  });
+  pdfdoc.save('Baogia.pdf');
+});
+
+</script>
+<style type="text/css">
+  #note_qty{padding:16px 20px; font-size: 18px}
+</style>
+{{ footer }} 

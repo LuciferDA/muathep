@@ -3,17 +3,18 @@
                            <div class="footer_new">
                               <div class="footer-new-left">
                                  <ul>
+
                                     <li>
                                        <h6>Địa chỉ</h6>
-                                       <a href="#">Đà Nẵng</a>
+                                       <a href="#">{{address}}</a>
                                     </li>
                                     <li>
                                        <h6>Điện thoại</h6>
-                                       <a href="#">0912947499</a>
+                                       <a href="tel:{{telephone}}">{{telephone}}</a>
                                     </li>
                                     <li>
                                        <h6>EMAIL</h6>
-                                       <a href="#">support@muathep.com</a>
+                                       <a href="#">{{email}}</a>
                                     </li>
                                     <!-- <li>
                                        <h6>CIN NUMBER</h6>
@@ -26,9 +27,11 @@
                                     <div class="footer-menu-box">
                                        <h5>Danh Mục</h5>
                                        <ul class="f-menu">
-                                          <li><a href="#">Thép Xây Dựng</a></li>
-                                          <li><a href="#">Thép Hình</a></li>
-                                          <li><a href="#">Phôi Thép</a></li>
+                                        {% if categories %}
+                                          {% for category in categories %}
+                                          <li><a href="{{category.href}}">{{category.name}}</a></li>
+                                          {% endfor %}
+                                        {% endif %}
                                        </ul>
                                     </div>
                                     <div class="footer-menu-box">
@@ -52,8 +55,8 @@
                                     <div class="footer-menu-box">
                                        <h5>Tài khoản</h5>
                                        <ul  class="f-menu">
-                                          <li><a href="#">Chính sách bảo mật</a></li>
-                                          <li><a href="#">Chính sách thanh toán</a></li>
+                                          <li><a href="{{privacy}}">Chính sách bảo mật</a></li>
+                                          <li><a href="{{payment}}">Chính sách thanh toán</a></li>
                                           <li><a href="#">Tài khoản</a></li>
                                        </ul>
                                     </div>

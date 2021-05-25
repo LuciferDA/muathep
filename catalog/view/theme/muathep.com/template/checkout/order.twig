@@ -1,119 +1,318 @@
 {{ header }}
-<div id="checkout-cart" class="container">
-  <ul class="breadcrumb">
-    {% for breadcrumb in breadcrumbs %}
-    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
-    {% endfor %}
-  </ul>
-  {% if attention %}
-  <div class="alert alert-info"><i class="fa fa-info-circle"></i> {{ attention }}
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-  </div>
-  {% endif %}
-  {% if success %}
-  <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-  </div>
-  {% endif %}
-  {% if error_warning %}
-  <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-  </div>
-  {% endif %}
-  <div class="row">{{ column_left }}
-    {% if column_left and column_right %}
-    {% set class = 'col-sm-6' %}
-    {% elseif column_left or column_right %}
-    {% set class = 'col-sm-9' %}
-    {% else %}
-    {% set class = 'col-sm-12' %}
-    {% endif %}
-    <div id="content" class="{{ class }}">{{ content_top }}
-      <h1>{{ heading_title }}
-        {% if weight %}
-        &nbsp;({{ weight }})
-        {% endif %} </h1>
-      <form action="{{ action }}" method="post" enctype="multipart/form-data">
-        <div class="table-responsive">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <td class="text-center">{{ column_image }}</td>
-                <td class="text-left">{{ column_name }}</td>
-                <td class="text-left">{{ column_model }}</td>
-                <td class="text-left">{{ column_quantity }}</td>
-                <td class="text-right">{{ column_price }}</td>
-                <td class="text-right">{{ column_total }}</td>
-              </tr>
-            </thead>
-            <tbody>
-            
-            {% for product in products %}
-            <tr>
-              <td class="text-center">{% if product.thumb %} <a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-thumbnail" /></a> {% endif %}</td>
-              <td class="text-left"><a href="{{ product.href }}">{{ product.name }}</a> {% if not product.stock %} <span class="text-danger">***</span> {% endif %}
-                {% if product.option %}
-                {% for option in product.option %} <br />
-                <small>{{ option.name }}: {{ option.value }}</small> {% endfor %}
-                {% endif %}
-                {% if product.reward %} <br />
-                <small>{{ product.reward }}</small> {% endif %}
-                {% if product.recurring %} <br />
-                <span class="label label-info">{{ text_recurring_item }}</span> <small>{{ product.recurring }}</small> {% endif %}</td>
-              <td class="text-left">{{ product.model }}</td>
-              <td class="text-left"><div class="input-group btn-block" style="max-width: 200px;">
-                  <input type="text" name="quantity[{{ product.cart_id }}]" value="{{ product.quantity }}" size="1" class="form-control" />
-                  <span class="input-group-btn">
-                  <button type="submit" data-toggle="tooltip" title="{{ button_update }}" class="btn btn-primary"><i class="fa fa-refresh"></i></button>
-                  <button type="button" data-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger" onclick="cart.remove('{{ product.cart_id }}');"><i class="fa fa-times-circle"></i></button>
-                  </span></div></td>
-              <td class="text-right">{{ product.price }}</td>
-              <td class="text-right">{{ product.total }}</td>
-            </tr>
-            {% endfor %}
-            {% for voucher in vouchers %}
-            <tr>
-              <td></td>
-              <td class="text-left">{{ voucher.description }}</td>
-              <td class="text-left"></td>
-              <td class="text-left"><div class="input-group btn-block" style="max-width: 200px;">
-                  <input type="text" name="" value="1" size="1" disabled="disabled" class="form-control" />
-                  <span class="input-group-btn">
-                  <button type="button" data-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger" onclick="voucher.remove('{{ voucher.key }}');"><i class="fa fa-times-circle"></i></button>
-                  </span></div></td>
-              <td class="text-right">{{ voucher.amount }}</td>
-              <td class="text-right">{{ voucher.amount }}</td>
-            </tr>
-            {% endfor %}
-              </tbody>
-            
-          </table>
+<div id="bodycon">
+  <div class="container   ">
+     <div class="main-container col1-layout">
+        <div class="contentBox contentWithSidebar productDetails" id="">
+           <div class="main">
+              <!-- <div class="breadcrumbs">
+                 <ul>
+                   <li class="home"> <a href="" title="Go to Home Page">Home</a> <span> &gt; </span> </li>
+                   <li> <strong>Define</strong> </li>
+                 </ul>
+                 </div> -->
+              <div class="col-main ">
+                 <div class="std">
+                    <p>
+                    <div class="container getquote">
+                       <h2 class="log-title">Tạo Yêu Cầu Báo Giá</h2>
+                       <div class="rwsform">
+                          <form method="post" name="myForm" action="http://muathep.local/index.php?route=checkout/order/Saveorder">
+                             <div class="rwsform_inner">
+                                <h3>Thông Tin</h3>
+                                <fieldset>
+                                   <p class="input-box">  
+                                      <input type="text" name="full_name" required autocomplete="off"  placeholder="Họ Tên"/>
+                                   </p>
+                                   <p class="input-box">  
+                                      <input type="email" name="email" required autocomplete="off"  placeholder="Email-ID"/>
+                                   </p>
+                                   <p class="input-box">
+                                      <input class="number_font" type="text" name="mobile_number" id="phone" maxlength="10" required autocomplete="off"  placeholder="Số Điện Thoại"/>
+                                   </p>
+                                   <p class="input-box">
+                                      <input type="text" name="address" id="address" required autocomplete="off" placeholder="Địa Chỉ" />
+                                   </p>
+                                   <p class="input-box">
+                                      <select name="city">
+                                         <option value=""> Thành Phố </option>
+                                         <option value="Hà Nội">Hà Nội </option>
+                                         <option value="Đà Nẵng">Đà Nẵng</option>
+                                         <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+                                      </select>
+                                   </p>
+                                   <p class="input-box">
+                                      <select name="district">
+                                         <option value=""> Quận huyện </option>
+                                         <option value="Thanh khê">Thanh khê </option>
+                                         <option value="Hải Châu">Hải Châu</option>
+                                         <option value="Liên chiểu">Liên chiểu</option>
+                                      </select>
+                                   </p>
+                                </fieldset>
+                                <h3>Thông Tin Đơn Hàng</h3>
+                                <fieldset>
+                                   <div class="add_products"><span id="add_product">Thêm sản phẩm</span> </div>
+                                   <div id="data">
+                                      <div class="noproduct"><p>Chưa có sản phẩm nào</p></div>
+                                      <table id='productData' has-product="0" style="display:none">
+                                         <thead>
+                                            <tr>
+                                               <td>Danh mục</td>
+                                               <td>Sản phẩm</td>
+                                               <td>Nhà sản xuất</td>
+                                               <td>Mác thép</td>
+                                               <td>Số lượng</td>
+                                               <td>Đơn vị</td>
+                                               <td>Đơn giá tạm tính</td>
+                                            </tr>
+                                         </thead>
+                                         <tbody id='#datatable'></tbody>
+                                      </table>
+                                   </div>
+                                </fieldset>
+                             </div>
+                             <textarea rows="10"  style="display:none" placeholder="Ghi chú" id="ncommentote" name="comment"></textarea>
+                             <input type="hidden" name="quote_from" value="website" /> 
+                             <p class="cmsubmit input-box">
+                                <input type="submit" name="submit" value="Tạo Báo Giá" class="cmsubmit cs"/>
+                             </p>
+
+                          </form>
+                          <p class="cmsubmit input-box">
+                          <button class="cmsubmit" id="gpdf">Tải xuống pdf</button>
+                          </p>
+                       </div>
+                    </div>
+                   <!-- support desktop starts here --> 
+                   <div id="add_modal_desktop" class="modal">
+                      <!-- Modal content -->
+                      <div class="modal-content">
+                         <div class="modal-content-right">
+                            <span class="add_product_close"></span>
+                            <div class="model_form">
+                               <h3>Thêm sản phẩm</h3>
+                               <ul class="signin_form">
+                                  <span id="support_login_error_box" style="display:none"></span>
+                                  <span id="support_login_success_box" style="display:none"></span>
+                                  <form name="support_form" id="support_form">
+                                     <li>
+                                       <select id="categoryName">
+                                          {% for category in categories %}         
+                                            <option value="{{category.category_id}}">{{category.name}}</option>
+                                          {% endfor %}
+                                        </select>
+                                     </li>
+                                     <li>
+                                       <select id="productName">
+                                          <option>Sản phẩm</option>
+                                        </select>
+                                     </li>
+                                     <li>
+                                       <select id="steelgrade">
+                                          <option>Mác thép</option>
+                                        </select>
+                                     </li>
+                                     <li>
+                                       <select id="manufacturer">
+                                          <option>Nhà cung cấp</option>
+                                        </select>
+                                     </li>
+                                     <li>
+                                        <input type="text" name="qty" id="qty" placeholder="Số lượng"  required='required' />
+                                        <br/>
+                                        <input type="hidden" name="weight_class" id="weight_class" value="" />
+                                        <i><p id="note_qty"></p></i>
+                                     </li>
+
+                                     <li> <button type="button" class="btn-sumbmit" id="add_form">Thêm</button>  </li>
+                                     <!--<input type="submit" value="SEND" />-->
+                                  </form>
+                               </ul>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+
+<script>       
+
+jQuery("#gpdf").click(function(e){
+  var pdfdoc = new jsPDF();
+  var specialElementHandlers = {
+  '#ignoreContent': function (element, renderer) {
+      return true;
+    }
+  };
+  pdfdoc.fromHTML($j('#data').html(),10,10,{
+
+  'width': 110,
+
+  'elementHandlers': specialElementHandlers
+  
+  });
+  pdfdoc.save('Baogia.pdf');
+});
+// get the modal  
+var add_modal_desktop = document.getElementById('add_modal_desktop');
+/*var model04 = document.getElementById('support_modal');
+var model05 = document.getElementById('tracK_modal');*/
+var model06 = document.getElementById('tracK_modal_desktop');
+
+// get the button which opens the modal      
+var add_btn_desktop = document.getElementById('add_product');
+/*var btn4 = document.getElementById('btn4');
+var btn5 = document.getElementById('btn5');*/
+
+// get the close button which closes the modal  
+var add_product_close = document.getElementsByClassName('add_product_close')[0];
+/* var close_btn04 = document.getElementsByClassName('close_modal4')[0];
+*/
+var close_btn06 = document.getElementsByClassName('close_modal6')[0];
+  
+// when user clicks the button open the model
+add_btn_desktop.onclick =  function(){
+  add_modal_desktop.style.display = "block";
+}
+
+/*btn5.onclick =  function(){
+  model05.style.display = "block";
+}
+
+expert_btn_desktop.onclick =  function(){
+  expert_modal_desktop.style.display = "block";
+}  */
+  
+// when the user clicks on close button close the model
+
+add_product_close.onclick = function(e) {
+  add_modal_desktop.style.display = "none";
+};                  
+   
+</script>
+<script>
+ jQuery("#add_form").click(function(e){
+     
+ var container = jQuery("#productData");
+
+ var datatable = jQuery("#datatable");
+
+ if(container.attr("has-product") == 0){
+
+    container.attr("has-product","1");
+
+    container.css('display','');
+
+    jQuery(".noproduct").css('display','none');
+ }
+
+ var categoryName = jQuery("#categoryName option:selected").text();
+ var categoryName_id = jQuery("#categoryName").val();
+ var product_id = jQuery("#productName").val();
+ var productName = jQuery("#productName option:selected").text();
+ var qty = jQuery("#qty").val();
+ var weight_class = jQuery("#weight_class").val();
+ var steelgrade = jQuery("#steelgrade option:selected").text();
+ var manufacturer = jQuery("#manufacturer option:selected").text();
+ var price = jQuery("#manufacturer option:selected").attr('price');
+ var total_price = price*qty;
+ container.append("<tr><td>"+categoryName+"</td><td>"+productName+"</td><td>"+manufacturer+"</td><td>"+steelgrade+"</td><td>"+qty+"</td><td>"+weight_class+"</td><td>"+total_price+"</td></tr>");
+jQuery("#ncommentote").css('display','block');
+var rowCount = container.length + 1;
+  html = '';
+  html = html+ "<input type='hidden' name='products["+rowCount+"][category]' value='"+categoryName_id+"'/>";
+  html = html+ "<input type='hidden' name='products["+rowCount+"][product_id]' value='"+product_id+"'/>";
+  html = html+ "<input type='hidden' name='products["+rowCount+"][name]' value='"+productName+"'/>";
+  html = html+ "<input type='hidden' name='products["+rowCount+"][model]' value='"+steelgrade+'/'+categoryName+"'/>";
+   html = html+ "<input type='hidden' name='products["+rowCount+"][qty]' value='"+qty+"'/>";
+  html = html+ "<input type='hidden' name='products["+rowCount+"][price]' value='"+price+"'/>";
+  html = html+ "<input type='hidden' name='products["+rowCount+"][total]' value='"+total_price+"'/>";
+  container.append(html);
+ return;
+    
+ 
+ //$container.append('<div id="answerdiv ' + $container.children().length + 1 + '"></div>');
+
+ });
+
+jQuery('#categoryName').change(function(e) {
+  var categoryid = jQuery("#categoryName").val();
+    $j.ajax({
+        url: 'index.php?route=checkout/order/getProducts&category_id='+categoryid,
+        type: "GET",
+        dataType: 'json',
+        success: function(data) {
+          var html = '';
+          $j.each(data, function( key, value ) {
+            html = html+"<option value='"+ value['product_id'] +"'>"+ value['name'] + "</option>";
+          });
+          $j("#productName").empty().append(html);
+      }
+    });
+});
+
+jQuery('#productName').change(function(e) {
+  var productid = jQuery("#productName").val();
+    $j.ajax({
+        url: 'index.php?route=checkout/order/getSteelGrade&product_id='+productid,
+        type: "GET",
+        dataType: 'json',
+        success: function(data) {
+          var html = '';
+          $j.each(data, function( key, value ) {
+            html = html+"<option value='"+ value['id'] +"'>"+ value['name'] + "</option>";
+          });
+          $j("#steelgrade").empty().append(html);
+      }
+    });
+
+    $j.ajax({
+        url: 'index.php?route=checkout/order/getProduct&product_id='+productid,
+        type: "GET",
+        dataType: 'json',
+        success: function(data) {
+          $j.each(data, function( key, value ) {
+            text = 'Đơn vị tính '+ value['weight'];
+            var weight_class = value['weight'];
+            $j("#note_qty").text(text);
+            $j("#weight_class").val(weight_class);
+          });
+
+
+          
+      }
+    });
+});
+
+jQuery('#steelgrade').change(function(e) {
+  var steelgradeid = jQuery("#steelgrade").val();
+  var productid = jQuery("#productName").val();
+    $j.ajax({
+        url: 'index.php?route=checkout/order/getSteelManufacturer&product_id='+productid+'&steelgrade_id='+steelgradeid,
+        type: "GET",
+        dataType: 'json',
+        success: function(data) {
+          var html = '';
+          $j.each(data, function( key, value ) {
+            html = html+"<option value='"+ value['id'] +"' price="+value['price']+">"+ value['name'] + "</option>";
+          });
+          $j("#manufacturer").css('display','block');
+          $j("#manufacturer").empty().append(html);
+      }
+    });
+});
+ 
+function removeRow(id){
+  jQuery( "#product_row_"+id ).remove();
+}
+</script>
+              </p>
+           </div>
         </div>
-      </form>
-      {% if modules %}
-      <h2>{{ text_next }}</h2>
-      <p>{{ text_next_choice }}</p>
-      <div class="panel-group" id="accordion"> {% for module in modules %}
-        {{ module }}
-        {% endfor %} </div>
-      {% endif %} <br />
-      <div class="row">
-        <div class="col-sm-4 col-sm-offset-8">
-          <table class="table table-bordered">
-            {% for total in totals %}
-            <tr>
-              <td class="text-right"><strong>{{ total.title }}:</strong></td>
-              <td class="text-right">{{ total.text }}</td>
-            </tr>
-            {% endfor %}
-          </table>
-        </div>
-      </div>
-      <div class="buttons clearfix">
-        <div class="pull-left"><a href="{{ continue }}" class="btn btn-default">{{ button_shopping }}</a></div>
-        <div class="pull-right"><a href="{{ checkout }}" class="btn btn-primary">{{ button_checkout }}</a></div>
-      </div>
-      {{ content_bottom }}</div>
-    {{ column_right }}</div>
+     </div>
+  </div>
 </div>
+</div>
+</div>
+<style type="text/css">
+  #note_qty{padding:16px 20px; font-size: 18px}
+</style>
 {{ footer }} 
