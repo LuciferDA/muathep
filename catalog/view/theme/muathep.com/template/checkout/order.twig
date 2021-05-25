@@ -16,7 +16,7 @@
                     <div class="container getquote">
                        <h2 class="log-title">Tạo Yêu Cầu Báo Giá</h2>
                        <div class="rwsform">
-                          <form method="post" name="myForm" action="https://steeloncall.com/advertisementadmin/index/save/">
+                          <form method="post" name="myForm" action="http://muathep.local/index.php?route=checkout/order/Saveorder">
                              <div class="rwsform_inner">
                                 <h3>Thông Tin</h3>
                                 <fieldset>
@@ -27,25 +27,25 @@
                                       <input type="email" name="email" required autocomplete="off"  placeholder="Email-ID"/>
                                    </p>
                                    <p class="input-box">
-                                      <input class="number_font" type="number" name="mobile_number" id="phone" maxlength="10" required autocomplete="off"  placeholder="Số Điện Thoại"/>
+                                      <input class="number_font" type="text" name="mobile_number" id="phone" maxlength="10" required autocomplete="off"  placeholder="Số Điện Thoại"/>
                                    </p>
                                    <p class="input-box">
-                                      <input type="text" name="city" id="city" required autocomplete="off"  placeholder="Địa Chỉ" />
+                                      <input type="text" name="address" id="address" required autocomplete="off" placeholder="Địa Chỉ" />
                                    </p>
                                    <p class="input-box">
-                                      <select name="state">
+                                      <select name="city">
                                          <option value=""> Thành Phố </option>
-                                         <option value="Andhra Pradesh">Hà Nội </option>
-                                         <option value="Arunachal Pradesh">Đà Nẵng</option>
-                                         <option value="Arunachal Pradesh">Hồ Chí Minh</option>
+                                         <option value="Hà Nội">Hà Nội </option>
+                                         <option value="Đà Nẵng">Đà Nẵng</option>
+                                         <option value="Hồ Chí Minh">Hồ Chí Minh</option>
                                       </select>
                                    </p>
                                    <p class="input-box">
-                                      <select name="state">
+                                      <select name="district">
                                          <option value=""> Quận huyện </option>
-                                         <option value="Andhra Pradesh">Thanh khê </option>
-                                         <option value="Arunachal Pradesh">Hải Châu</option>
-                                         <option value="Arunachal Pradesh">Liên chiểu</option>
+                                         <option value="Thanh khê">Thanh khê </option>
+                                         <option value="Hải Châu">Hải Châu</option>
+                                         <option value="Liên chiểu">Liên chiểu</option>
                                       </select>
                                    </p>
                                 </fieldset>
@@ -63,8 +63,7 @@
                                                <td>Mác thép</td>
                                                <td>Số lượng</td>
                                                <td>Đơn vị</td>
-                                               <td>Đơng giá tạm tính</td>
-                                               <td>Ghi chú</td>
+                                               <td>Đơn giá tạm tính</td>
                                             </tr>
                                          </thead>
                                          <tbody id='#datatable'></tbody>
@@ -72,6 +71,7 @@
                                    </div>
                                 </fieldset>
                              </div>
+                             <textarea rows="10"  style="display:none" placeholder="Ghi chú" id="ncommentote" name="comment"></textarea>
                              <input type="hidden" name="quote_from" value="website" /> 
                              <p class="cmsubmit input-box">
                                 <input type="submit" name="submit" value="Tạo Báo Giá" class="cmsubmit cs"/>
@@ -113,7 +113,7 @@
                                         </select>
                                      </li>
                                      <li>
-                                       <select id="manufacturer" style="display:none">
+                                       <select id="manufacturer">
                                           <option>Nhà cung cấp</option>
                                         </select>
                                      </li>
@@ -124,9 +124,6 @@
                                         <i><p id="note_qty"></p></i>
                                      </li>
 
-                                     <li>
-                                        <textarea placeholder="Ghi chú" id="note" name="note"  required='required'></textarea>
-                                     </li>
                                      <li> <button type="button" class="btn-sumbmit" id="add_form">Thêm</button>  </li>
                                      <!--<input type="submit" value="SEND" />-->
                                   </form>
@@ -192,18 +189,6 @@ add_product_close.onclick = function(e) {
    
 </script>
 <script>
-jQuery(function ($) {
-$("#phone").on("keypress", function (e) {
-  
-  //alert(id);
-           var keyCode = e.which ? e.which : e.keyCode
-           var ret = ((keyCode >= 48 && keyCode <= 57)) || (keyCode == 37 || keyCode == 39 || keyCode == 63272 || keyCode == 8 || keyCode == 45 || keyCode == 189);
-           $("#error").css("display", ret ? "none" : "inline");
-           return ret;
-       });
-});
-</script>
-<script>
  jQuery("#add_form").click(function(e){
      
  var container = jQuery("#productData");
@@ -220,18 +205,27 @@ $("#phone").on("keypress", function (e) {
  }
 
  var categoryName = jQuery("#categoryName option:selected").text();
+ var categoryName_id = jQuery("#categoryName").val();
+ var product_id = jQuery("#productName").val();
  var productName = jQuery("#productName option:selected").text();
  var qty = jQuery("#qty").val();
- var note = jQuery("#note").val();
  var weight_class = jQuery("#weight_class").val();
  var steelgrade = jQuery("#steelgrade option:selected").text();
  var manufacturer = jQuery("#manufacturer option:selected").text();
  var price = jQuery("#manufacturer option:selected").attr('price');
  var total_price = price*qty;
- container.append("<tr><td>"+categoryName+"</td><td>"+productName+"</td><td>"+manufacturer+"</td><td>"+steelgrade+"</td><td>"+qty+"</td><td>"+weight_class+"</td><td>"+total_price+"</td><td>"+note+"</td></tr>");
- 
- 
-
+ container.append("<tr><td>"+categoryName+"</td><td>"+productName+"</td><td>"+manufacturer+"</td><td>"+steelgrade+"</td><td>"+qty+"</td><td>"+weight_class+"</td><td>"+total_price+"</td></tr>");
+jQuery("#ncommentote").css('display','block');
+var rowCount = container.length + 1;
+  html = '';
+  html = html+ "<input type='hidden' name='products["+rowCount+"][category]' value='"+categoryName_id+"'/>";
+  html = html+ "<input type='hidden' name='products["+rowCount+"][product_id]' value='"+product_id+"'/>";
+  html = html+ "<input type='hidden' name='products["+rowCount+"][name]' value='"+productName+"'/>";
+  html = html+ "<input type='hidden' name='products["+rowCount+"][model]' value='"+steelgrade+'/'+categoryName+"'/>";
+   html = html+ "<input type='hidden' name='products["+rowCount+"][qty]' value='"+qty+"'/>";
+  html = html+ "<input type='hidden' name='products["+rowCount+"][price]' value='"+price+"'/>";
+  html = html+ "<input type='hidden' name='products["+rowCount+"][total]' value='"+total_price+"'/>";
+  container.append(html);
  return;
     
  
@@ -278,9 +272,11 @@ jQuery('#productName').change(function(e) {
           $j.each(data, function( key, value ) {
             text = 'Đơn vị tính '+ value['weight'];
             var weight_class = value['weight'];
+            $j("#note_qty").text(text);
+            $j("#weight_class").val(weight_class);
           });
-          $j("#note_qty").text(text);
-          $j("#weight_class").val(weight_class);
+
+
           
       }
     });
@@ -307,106 +303,6 @@ jQuery('#steelgrade').change(function(e) {
 function removeRow(id){
   jQuery( "#product_row_"+id ).remove();
 }
-</script>
-<script>
-   jQuery(document).ready(function(){
-    jQuery(document).on("change", ".item", function() {
-    
-      var selid=jQuery(this).attr('id');
-      var selectedValue = this.value;
-         
-      var desarr = selid.split("_");
-      var brandid=desarr[1];
-      var myarr = selectedValue.split("_");
-            var pincode = jQuery('#pincode').val(); 
-      $j.ajax({
-          url: "https://steeloncall.com/advertisementadmin/index/changeBrand/",
-          type: "POST",
-          data: "&pincode="+pincode,
-          success: function(data) {
-            
-            var obj= JSON.parse(data);
-            var html='';
-            if(obj.status=='1'){
-            html=html+"<option value=''>Select Brand</option>";
-            $j.each( obj.data, function( key, value ) {
-            html=html+"<option value='"+ value +"'>"+ value + "</option>";
-            });
-            }
-            //$j("#brand_name_"+desid).html(html);
-            $j("#brand_"+brandid).html(html);
-        }
-      });
-    });
-    
-    jQuery(document).on("change", ".brand", function() {
-      
-      
-      
-        var selid=jQuery(this).attr('id');
-        var selectedValue = this.value;
-        var desarr = selid.split("_");
-        var desid=desarr[1];
-        var myarr = selectedValue.split("_");
-               
-               
-               var pincode = jQuery('#pincode').val();  
-          
-              
-               var brand = jQuery("#brand_"+desid).val();
-               
-               
-        //make the ajax call
-        $j.ajax({
-          url: "https://steeloncall.com/advertisementadmin/index/changeGrade/",
-          type: "POST",
-          data: "pincode="+pincode+"&brand="+brand,
-          success: function(data) {
-            
-            var obj= JSON.parse(data);
-            var html='';
-            if(obj.status=='1'){
-            html=html+"<option value=''>Select Grade</option>";
-            $j.each( obj.data, function( key, value ) {
-            html=html+"<option value="+ value +">"+ value + "</option>";
-            });
-        }               
-            $j("#grade_"+desid).html(html);
-          }
-        });
-      });
-      
-      jQuery(document).on("change", ".item", function() {
-        
-        var selid=jQuery(this).attr('id');
-        var selectedValue = this.value;
-        var desarr = selid.split("_");
-        var desid=desarr[1];
-        var myarr = selectedValue.split("_");
-        
-        //make the ajax call
-        $j.ajax({
-          url: "https://steeloncall.com/advertisementadmin/index/changeCategory/",
-          type: "POST",
-          data: "&c_id="+myarr[0],
-          success: function(data) {
-            
-          /*  var obj= JSON.parse(data);
-            var html='';
-            if(obj.status=='1'){
-            html=html+"<option value=''>Select Size</option>";
-            $j.each( obj.data, function( key, value ) {
-              alert(key);
-              alert(value)
-            html=html+"<option value='"+ value +"'>"+ value + "</option>";
-            });
-            }*/
-            //$j("#brand_name_"+desid).html(html);
-            $j("#sizes_"+desid).html(data);
-          }
-        });
-      });
-   });
 </script>
               </p>
            </div>
