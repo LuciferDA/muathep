@@ -334,6 +334,31 @@ class ModelCatalogProduct extends Model {
 		return $product_attribute_group_data;
 	}
 
+	public function getProductGrade($product_id) {
+		$product_attribute_group_data = array();
+
+		$product_attribute_query = $this->db->query("
+			SELECT a.attribute_id, ad.name
+			FROM " . DB_PREFIX . "product_attribute pa LEFT JOIN " . DB_PREFIX . "attribute a ON (pa.attribute_id = a.attribute_id) 
+			LEFT JOIN " . DB_PREFIX . "attribute_description ad ON (a.attribute_id = ad.attribute_id)
+
+			WHERE pa.product_id = '" . (int)$product_id . "' AND ad.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY a.sort_order, ad.name");
+		
+
+		return $product_attribute_query->rows;
+	}
+
+	public function getProductManufacturer($product_id,$steelgrade_id){
+		$product_attribute_query = $this->db->query("
+			SELECT  ma.name as manufacturer_name, ma.manufacturer_id, pa.price
+			FROM " . DB_PREFIX . "product_attribute pa LEFT JOIN " . DB_PREFIX . "attribute a ON (pa.attribute_id = a.attribute_id) 
+			LEFT JOIN " . DB_PREFIX . "attribute_description ad ON (a.attribute_id = ad.attribute_id)
+			LEFT JOIN " . DB_PREFIX . "manufacturer ma ON (pa.manufacturer_id = ma.manufacturer_id)
+			WHERE pa.product_id = '" . (int)$product_id . "' AND pa.attribute_id ='".(int)$steelgrade_id."' AND ad.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY a.sort_order, ad.name");
+
+		return $product_attribute_query->rows;
+	}
+
 	public function getProductOptions($product_id) {
 		$product_option_data = array();
 
