@@ -369,7 +369,7 @@ span.gal kbd{font:normal 13px Roboto,sans-serif;position:absolute;width:95%;z-in
 
 .contact_us_page .contact_us_form{ border:1px solid #acebff; text-align:center; padding:50px 10.2% 50px 8.7%;}
 .contact_us_page .contact_us_form .fieldset:after{ content:' '; display:table; clear:both;}
-.contact_us_page .contact_us_form .fieldset .caddress{ float:left; width:40%; text-align:left;}
+.contact_us_page .contact_us_form .fieldset .caddress{ float:left; width:50%; text-align:left;}
 .contact_us_page .contact_us_form .fieldset .caddress h3{ font-weight: 700; font-size: 18px; color:#152545; text-transform:uppercase; margin: 0 0 36px 0; padding: 0;}
 .contact_us_page .contact_us_form .fieldset .caddress .address{ margin: 0 0 33px 0; padding: 0;}
 .contact_us_page .contact_us_form .fieldset .caddress .address h4{ font-weight: 700; font-size: 18px; color:#31c0ec; margin: 0 0 4px 0; padding: 0;}

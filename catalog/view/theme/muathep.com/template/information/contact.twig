@@ -1,146 +1,175 @@
 {{header}}
-<div id="information-information" class="container">
-  <ul class="breadcrumb">
-  {% for breadcrumb in breadcrumbs %}
-      {% if loop.first %}
-     <li><a href="{{ breadcrumb.href }}"><i class="fa fa-home"></i></a></li>
-      {% else %}
-     <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a> <i class="fa fa-angle-double-right"></i> </li>
-     {% endif %}
-  {% endfor %}
-  </ul>
- <div class="row">
-    {{ column_left }}
-    {% if column_left and column_right %}
-    {% set class = 'col-sm-6' %}
-    {% elseif column_left or column_right %}
-    {% set class = 'col-sm-9' %}
-    {% else %}
-    {% set class = 'col-sm-12' %}
-    {% endif %}
-    <div id="information-contact">
-       <div id="content" class="{{class}} ">
-          <div class="contact-form-design container">
-             <div class="left">
-                <div class="address-detail"><img src="{{logo}}" alt="{{store}}" title="{{store}}" class="img-thumbnail" /></div>
-                <div class="address-detail1">
-                   <div class="image"></div>
-                   <strong>{{store}}</strong>
-                   <address>
-                      {{address}}
-                   </address>
-                   {% if geocode %}
-                    <a href="https://maps.google.com/maps?q={{geocode|url_encode }}&hl=en&t=m&z=15" target="_blank" class="btn btn-info"><i class="fa fa-map-marker"></i> {{button_map}}</a>
-                    {% endif %}
-                </div>
-                <div class="telephone">
-                   <div class="image"></div>
-                   <strong>{{text_telephone}} </strong>
-                   <address><a href="tel:{{telephone}}"></a>{{telephone}} </address>
-                </div>
-                <div class="time">
-                   <div class="image"></div>
-                   {% if open %}
-                  <strong>{{text_open}}</strong><br />
-                  {{open}}<br />
-                  <br />
-                  {% endif %}
-                </div>
-                <div class="comment">
-                   <div class="image"></div>
-                    {% if comment %}
-                    <strong>{{text_comment}}</strong><br />
-                    <address>{{comment}}</address>
-                    {% endif %}
-                </div>
-             </div>
+<div id="bodycon">
+   <div class="container   ">
+      <div class="main-container col1-layout">
+         <div class="contentBox contentWithSidebar productDetails " id="">
+            <div class="main">
+               <!-- <div class="breadcrumbs">
+                  <ul>
+                    <li class="home"> <a href="" title="Go to Home Page">Home</a> <span> &gt; </span> </li>
+                    <li> <strong>Define</strong> </li>
+                  </ul>
+                  </div> -->
+               <div class="col-main ">
+                  <div class="contact-us">
+                     <div class="rwsform">
+                        <!--<div class="left"><img alt="" src=""></div>-->
+                        <div class="contact_us_page">
+                           <div class="page-title">
+                              <img src="https://steeloncall.com/skin/frontend/rwd/steeloncall/images/contact_us_icon.png" alt="Steeloncall">
+                              <h1>{{heading_title}}</h1>
+                           </div>
+                           <div class="contact_us_form">
+                              <div id="messages_product_view"></div>
+                              <form action="{{action}}" id="contactForm" method="post" class="scaffold-form">
+                                 <div class="fieldset">
+                                    <div  class="caddress">
+                                       <h3>{{store}}</h3>
+                                       <div class="address">
+                                          <h4>Thông tin liên hệ:</h4>
+                                          <p>{{address}}</p>
+                                          <p>{{telephone}}</p>
+                                          <p>{{config_email}}</p>
+                                       </div>
+                                       <div class="map">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d245588.31444051798!2d108.10673343747041!3d15.8924333898782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3142198a83dcdf43%3A0x53b1a0ade0c3b907!2zQ8O0bmcgVHkgQ3AgxJDhuqd1IFTGsCBYw6J5IEThu7FuZyBUaMOpcCBOaMOibiBMdeG6rXQ!5e0!3m2!1sen!2s!4v1621927305478!5m2!1sen!2s" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                       </div>
 
-             <div class="contact-form">
-                <form action="{{action}}" method="post" enctype="multipart/form-data" class="form-horizontal">
-                   <fieldset>
-                      <legend>{{text_contact}}</legend>
-                      <div class="form-group required">
-                         <label class="col-sm-2 control-label" for="input-name">{{entry_name}}</label>
-
-                         <div class="col-sm-10">
-                            <input type="text" name="name" value="{{name}}" id="input-name" class="form-control" />
-                            {% if error_name %}
-                            <div class="text-danger">{{error_name}}</div>
-                            {% endif %}
-                         </div>
-                      </div>
-                      <div class="form-group required">
-                         <label class="col-sm-2 control-label" for="input-email">{{entry_email}}</label>
-                         <div class="col-sm-10">
-                            <input type="text" name="email" value="" id="input-email" class="form-control" />
-                            {% if error_email %}
-                            <div class="text-danger">{{error_email}}</div>
-                            {% endif %}
-                         </div>
-                      </div>
-                      <div class="form-group required">
-                         <label class="col-sm-2 control-label" for="input-enquiry">{{entry_enquiry}}</label>
-                         <div class="col-sm-10">
-                            <textarea name="enquiry" rows="10" id="input-enquiry" class="form-control">{{enquiry}}</textarea>
-                            {% if error_enquiry %}
-                            <div class="text-danger">{{error_enquiry}}</div>
-                            {% endif %}
-                         </div>
-                      </div>
-                   </fieldset>
-                   <div class="buttons">
-                      <div class="pull-right">
-                         <input class="btn btn-primary captcha-btn" type="submit" value="{{button_submit}}" />
-                      </div>
-                   </div>
-                </form>
-             </div>
-             <div class="map_button" title="See Map"><i class="fa fa-map-marker"></i></div>
-          </div>
-          <div class="panel panel-default">
-             <div class="panel-body">
-                <div class="row contact-info">
-                   <div class="right">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d958.7108482970762!2d108.2084263997603!3d16.02166587348544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3142198a3b82ca97%3A0x994c82a06f93bcfd!2zMzQgVMO0biBUaOG6pXQgVGh1eeG6v3QsIEtodcOqIFRydW5nLCBD4bqpbSBM4buHLCDEkMOgIE7hurVuZyA1NTAwMDAsIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1610154530421!5m2!1sen!2s" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                     {#  <div class="map">
-                         <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAOgKBG0SbQowaKmm0GqdJPYsuuDlamDxM'></script>
-                         <div id='gmap_canvas' style='height:500px;'></div>
-                         <script type = 'text/javascript' >
-                            function init_map() {
-                              var t='19.166681%2C73.257838'; 
-                              var urlString = t.split("%2C");
-                                var x,y;
-                                x=urlString[0]; y=urlString[1];
-                                var myOptions = {
-                                  zoom: 12,
-                                  center: new google.maps.LatLng(x,y),
-                                  mapTypeId: google.maps.MapTypeId.ROADMAP
-                              };
-                                  map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
-                                  marker = new google.maps.Marker({
-                                  map: map,
-                                  position: new google.maps.LatLng(x,y)
-                            });
-                                  infowindow = new google.maps.InfoWindow({
-                                  content: '<strong>Kartpul Store</strong>'
-                            });
-                                  google.maps.event.addListener(marker, 'click', function() {
-                                  infowindow.open(map, marker);
-                            });
-                                  infowindow.open(map, marker);
-                            }
-                                google.maps.event.addDomListener(window, 'load', init_map); 
-                         </script>
-                      </div> #}
-                   </div>
-                </div>
-             </div>
-          </div>
-       </div>
+                                    </div>
+                                    <div  class="cform">
+                                       <h3>Gởi Liên Hệ</h3>
+                                       <!-- <h2 class="legend"></h2>-->
+                                       <ul class="form-list">
+                                          <li>
+                                             <div class="field">
+                                                <div class="input-box">
+                                                   <input placeholder="Họ tên" name="name" id="name" title="Name" value="" class="input-text required-entry" type="text" autocomplete="off" />
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <li>
+                                             <div class="input-box">
+                                                <input placeholder="Email" name="email" id="email" title="Email" value="" class="input-text required-entry validate-email" type="email" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" />
+                                             </div>
+                                          </li>
+                                          <li>
+                                             <div class="input-box">
+                                                <input placeholder="Số điện thoại" name="telephone"   id="telephone" title="Telephone" value="" maxlength="10" minlength="10" class="required-entry input-text" type="tel" autocomplete="off" />
+                                                <span id="error" style="color: Red; display: none; font-size:12px;">* Input digits (0 - 9)</span>
+                                             </div>
+                                          </li>
+                                          <li>
+                                             <div class="input-box">
+                                                <textarea name="comment" id="comment" title="Comment" class="required-entry input-text" cols="5" rows="3"></textarea>
+                                             </div>
+                                          </li>
+                                       </ul>
+                                       <div class="buttons-set">
+                                          <!-- <span class="reqd"></span> -->
+                                          <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+                                          <button type="submit" title="Submit" class="cs"><span>Gởi</span></button>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </form>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <script type="text/javascript">
+                     //<![CDATA[
+                         var contactForm = new VarienForm('contactForm', true);
+                     //]]>
+                  </script>
+                  <script>
+                     jQuery(document).ready(function($){
+                        $('div').removeClass('content-left');
+                        $('div').removeClass('content-right');
+                       });
+                  </script>
+                  <script>
+                     jQuery(function ($) {
+                         $("#telephone").on("keyup", function (e) {
+                             var keyCode = e.which ? e.which : e.keyCode
+                             var key_num = e.key;
+                             var tel_no = $('#telephone').val();
+                             if (tel_no.length==10 && tel_no.charAt(0)<6) {
+                                 
+                                 tel_no = tel_no.substr(1);
+                            $('#telephone').val(tel_no);
+                              $("#error").css("display", "inline");
+                             $("#error").html('Enter valid phone number');
+                             $('#telephone').removeClass("validation-passed");
+                             $('#telephone').addClass("validation-failed")
+                             return false;
+                         }else{
+                         $('#telephone').removeClass("validation-failed");
+                         $('#telephone').addClass("validation-passed");
+                         }
+                             
+                         });
+                     $("#telephone").on("keypress", function (e) {
+                     
+                          var keyCode = e.which ? e.which : e.keyCode
+                          var key_num = e.key;
+                         var tel_no = $('#telephone').val();
+                          
+                         
+                         
+                          if(tel_no.length==0 && (keyCode>=48 && keyCode<=53)){
+                            
+                            $("#error").css("display", keyCode ? "block" : "inline");
+                             $("#error").html('Enter valid phone number');
+                             return false;
+                             
+                         }else if (tel_no.length>0 && tel_no.charAt(0)<6) {
+                            
+                              $("#error").css("display", "inline");
+                             $("#error").html('Enter valid phone number');
+                             $('#telephone').addClass("validation-failed")
+                             return false;
+                         }else if(tel_no.length>9  ){
+                           
+                             $("#error").html('Enter valid phone number');
+                                  return false;
+                                  
+                        }else{
+                            
+                            
+                              var ret = ((keyCode >= 48 && keyCode <= 57)) || (keyCode == 37 || keyCode == 39 || keyCode == 63272 || keyCode == 8 || keyCode == 45 || keyCode == 189);
+                                     $("#error").css("display", ret ? "none" : "inline");
+                                     return ret;
+                                 
+                         }
+                          });  
+                     /*$("#telephone").on("keypress", function (e) {
+                     
+                          var keyCode = e.which ? e.which : e.keyCode
+                         var tel_no = $('#telephone').val();
+                         
+                         if(tel_no.length==0 && (keyCode>=48 && keyCode<=53)){
+                             
+                            $("#error").css("display", keyCode ? "block" : "inline");
+                             $("#error").html('Enter valid phone number');
+                             return false;
+                             
+                         }else if(tel_no.length>9){
+                                  return false;
+                                  
+                        }else{
+                              var ret = ((keyCode >= 48 && keyCode <= 57)) || (keyCode == 37 || keyCode == 39 || keyCode == 63272 || keyCode == 8 || keyCode == 45 || keyCode == 189);
+                                     $("#error").css("display", ret ? "none" : "inline");
+                                     return ret;
+                                 
+                         }
+                          });*/    
+                        });             
+                                    
+                  </script>
+               </div>
+            </div>
+         </div>
       </div>
- </div>
- {{content_bottom}}
+   </div>
 </div>
-
 {{footer}}
-
