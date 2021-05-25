@@ -23,25 +23,29 @@
  
                   <!-- End Google Tag Manager -->
                   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-                  <title>Muathep.com | Địa chỉ cung cấp Thép chất lượng - uy tín</title>
-                  <meta property="og:title" content="Muathep.vn | Địa chỉ cung cấp Thép chất lượng - uy tín" />
-                  <meta property="og:image" content="catalog/view/theme/muathep.com/images/logo-main.png" />
-                  <meta property="og:image:secure_url" content="catalog/view/theme/muathep.com/images/logo-main.png"/>
-                  <meta name="keywords" content="Muathep.com" />
-                  <meta name="description" content="Muathep.com" />
-                  <link rel="canonical" href="index.html" />
-                  <meta property="og:site_name" content="Trang thương mại về Sắt Thép" />
+                  <title>{{title}}</title>
+                  <meta property="og:title" content="{{title}}" />
+                  <meta property="og:image" content="{{images}}" />
+                  <meta property="og:image:secure_url" content="{{images}}"/>
+                  {% if keywords %}
+                     <meta name="keywords" content= "{{keywords}}" />
+                  {% endif %}
+                  {% if description %}
+                  <meta name="description" content="{{description}}" />
+                  {% endif %}
+                  <link rel="canonical" href="{{base}}" />
+                  <meta property="og:site_name" content="{{title}}" />
                   <meta property="og:type" content="e-commerce" />
-                  <meta property="og:url" content="https://muathep.ionsite.vn/" />
-                  <meta property="og:description" content="Nền tảng trực tuyến mua thép đầu tiên tại việt Nam" />
-                  <meta property="og:image:alt" content="Nền tảng trực tuyến mua thép đầu tiên tại việt Nam" />
+                  <meta property="og:url" content="{{base}}" />
+                  <meta property="og:description" content="{{description}}" />
+                  <meta property="og:image:alt" content="{{title}}" />
                   <meta property="og:updated_time" content="2021-05-19:27:48+05:30" />
                   <meta name="copyright" content="NhanLuat" />
                   <meta name="msnbot" content="INDEX, FOLLOW" />
                   <meta name="googlebot" content="INDEX, FOLLOW" />
                   <meta name="allow-search" content="yes" />
                   <meta name="revisit-after" content="daily" />
-                  <meta name="site" content="Buy steel online at steeloncall.com" />
+                  <meta name="site" content="{{description}}" />
                   <meta name="robots" content="INDEX,FOLLOW" />
                   <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0' >
                   <!--[if lt IE 7]>
@@ -217,7 +221,7 @@
                                        </div>
                                        <script type="text/javascript">
                                           //<![CDATA[
-                                             var ajaxUrl='autocomplete/search/searchAutocomplete/index.html';
+                                             var ajaxUrl='autocomplete/search/searchAutocomplete/{{base}}';
                                              var queryDelay = 0.5;
                                              var progressImage ='catalog/view/theme/muathep.com/images/ajax-loader.gif';
                                              var minCharacters = '2';
@@ -242,7 +246,7 @@
                         <div class="header_section ">
                            <header id="header">
                               <div class="container">
-                                 <div class="logo"><a href="index.html"><img src="{{logo}}" alt="Steeloncall"></a></div>
+                                 <div class="logo"><a href="{{base}}"><img src="{{logo}}" alt="Steeloncall"></a></div>
                                  <div class="hright">
                                     <div class="header_net">
                                        <div class="web-top-nav">
@@ -374,9 +378,9 @@
                                           </div>
                                           <!-- forget password model ends here -->
                                        </div>
-                                       <div class="toll-free"><span>Hotline:</span><strong>0912947499</strong></div>
+                                       <div class="toll-free"><span>Hotline:</span><strong>{{telephone}}</strong></div>
                                        <div class="header_cart">
-                                          <a href="checkout/cart/index.html" data-target-element="#header-cart" class="skip-link skip-cart  no-count">
+                                          <a href="checkout/cart/{{base}}" data-target-element="#header-cart" class="skip-link skip-cart  no-count">
                                              <div class="icon"></div>
                                              <div class="header-minicart"><em class="count-text">Giỏ hàng&nbsp;</em><span class="count"> 0 Item(s) </span></div>
                                           </a>
@@ -448,7 +452,7 @@
                                                       </div>
                                                       <script type="text/javascript">
                                                          //<![CDATA[
-                                                            var ajaxUrl='autocomplete/search/searchAutocomplete/index.html';
+                                                            var ajaxUrl='autocomplete/search/searchAutocomplete/{{base}}';
                                                             var queryDelay = 0.5;
                                                             var progressImage ='catalog/view/theme/muathep.com/images/ajax-loader.gif';
                                                             var minCharacters = '2';
@@ -462,7 +466,7 @@
                                                                   var acLayout = new Autocomplete();
                                                                   acLayout.initAutocomplete(ajaxUrl, 'search-result');
                                                                //});
-                                                            })
+                                                            });
                                                          //]]>
                                                       </script>
                                                    </form>
@@ -471,30 +475,7 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <!--  <div class="m-head">
-                                       <p class="toll-free"><span>Toll Free Number:</span> <strong>1800-833-2929 <span>(10AM - 6PM)</span></strong>   </p>
-                                        <div class="cart">
-                                             <ul>
-                                                
-                                                <li></li>
-                                                   <li> </li>
-                                                   <li><span class="location"><marquee direction="left" scrollamount="1"></marquee></span></li>
-                                                </ul>
-                                                <div class="serarch-form search"></div>
-                                          </div>
-                                        
-                                        </div> -->
-                                    <!--<div class="location-img">
-                                       <div class="flexslider">
-                                         <ul class="slides ">
-                                               <li>
-                                            <span><img src=""></span>
-                                            <strong></strong>
-                                         </li>
-                                                
-                                         </ul>
-                                       </div>
-                                       </div>-->
+
                                  </div>
                               </div>
                               <div class="web-menu">
@@ -502,39 +483,22 @@
                                  <nav class="web-nav">
                                     <div class="container">
                                        <ul class="nav desktop">
-                                          <li>
-                                             <a href="product.html">Thép Xây Dựng</a>
-                                             <ul class="sub_menu">
-                                                <li><a href="#">Thép Cuộn</a></li>
-                                                <li><a href="#">Thép Thanh Vằn</a></li>
-                                                <li><a href="#">Thép Thanh Tròn Trơn</a></li>
-                                             </ul>
-                                          </li>
-                                          <li>
-                                             <a href="product.html">Thép ống, hộp</a>
-                                          </li>
-                                          <li>
-                                             <a href="product.html">Xi măng</a>
-                                          </li>
-                                          <li>
-                                             <a href="product.html">Thép Hình</a>
-                                            <!--  <ul class="sub_menu">
-                                                <ul class="subsub_menu">
-                                                   <li>
-                                                   <li><a href="light-ms-rounds.html">MS Rounds</a></li>
-                                                   <li><a href="ms-angles.html">MS Angles</a></li>
-                                                   <li><a href="ms-squares.html">MS Squares</a></li>
-                                                   <li><a href="ms-channels.html">MS Channels</a></li>
-                                                   <li><a href="ms-sheets.html">MS Sheets</a></li>
-                                                   <li><a href="ms-plates.html">MS Plates</a></li>
-                                                   <li><a href="ms-flats.html">MS Flats</a></li>
-                                                   <li><a href="ms-pipes.html">MS Pipes</a></li>
-                                                   <li><a href="ms-unequal-angles.html">MS Unequal Angles</a></li>
-                                                   <li><a href="ismb.html">ISMB</a></li>
-                                                   </li>
-                                                </ul>
-                                             </ul> -->
-                                          </li>
+                                          {% if categories %}
+                                             {% for category in categories %}
+                                                <li>
+                                                   <a href="{{category.href}}">{{category.name}}</a>
+                                                   {% if category.children %}
+                                                   <ul class="sub_menu">
+                                                      {% for child in category.children %}
+                                                      <li><a href="{{child.href}}">{{child.name}}</a></li>
+                                                      {% endfor %}
+                                                     
+                                                   </ul>
+                                                {% endif %}
+                                                </li>
+                                             {% endfor %}
+                                          {% endif %}
+
                                           <li><a href="#">Nhà sản xuất</a></li>
                                           <li><a href="#">Tin tức ngành thép </a></li>
                                           
@@ -557,19 +521,13 @@
                                               
                                               search_box.classList.toggle("mystyle");
                                               
-                                            }
+                                            };
                                           
                                        </script>
                                     </div>
                                  </nav>
                               </div>
-                              <!--<div class="hsocial_icons">
-                                 <ul>
-                                     <li><a href="https://www.facebook.com/SteelonCall" target="_blank">facebook</a></li>
-                                     <li><a href="https://twitter.com/SteelonCall" target="_blank">twitter</a></li>                 
-                                     <li><a href="https://www.linkedin.com/company/steelon-call/" target="_blank">linkdien</a></li>
-                                 </ul>
-                                 </div>-->  
+
                            </header>
                         </div>
                      </div>

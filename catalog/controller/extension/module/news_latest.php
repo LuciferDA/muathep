@@ -38,6 +38,7 @@ class ControllerExtensionModuleNewsLatest extends Controller {
 					'href'        => $this->url->link('news/news', 'news_id=' . $result['news_id'])
 				);
 			}
+			
 
 			return $this->load->view('extension/module/news_latest', $data);
 		}
