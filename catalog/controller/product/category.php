@@ -133,7 +133,7 @@ class ControllerProductCategory extends Controller {
 
 			$data['categories'] = array();
 
-			$results = $this->model_catalog_category->getCategories($category_id);
+			$results = $this->model_catalog_category->getCategories(0);
 
 			foreach ($results as $result) {
 				$filter_data = array(
@@ -143,7 +143,7 @@ class ControllerProductCategory extends Controller {
 
 				$data['categories'][] = array(
 					'name' => $result['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
-					'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url),
+					'href' => $this->url->link('product/category', 'path='. $result['category_id'] . $url),
 					'thumb' => $this->model_tool_image->resize($result['image'] , $this->config->get('theme_' . $this->config->get('config_theme') . '_image_category_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_category_height'))
 				);
 			}

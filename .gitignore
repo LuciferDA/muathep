@@ -32,6 +32,6 @@ vqmod/checked.cache
 vqmod/mods.cache
 storage/modification/*
 storage/session/*
-
+storage/cache/*
 
 
