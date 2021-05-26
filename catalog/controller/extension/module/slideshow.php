@@ -7,6 +7,8 @@ class ControllerExtensionModuleSlideshow extends Controller {
 		$this->load->model('design/banner');
 		$this->load->model('tool/image');
 
+		$data['news'] = $this->url->link('news/news');
+		$data['quote'] = $this->url->link('checkout/order');
 		$data['banners'] = array();
 
 		$results = $this->model_design_banner->getBanner($setting['banner_id']);

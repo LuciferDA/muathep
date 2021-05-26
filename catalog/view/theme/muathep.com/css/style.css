@@ -1108,7 +1108,9 @@ div#data {
     letter-spacing: 2px;
     display: inline-block;
 }
-
+.error{padding:160px; text-align:center;}
+.error p {font-family: 'Poppins',sans-serif; font-size:28px;}
+.error a {font-family: 'Poppins',sans-serif; font-size:15px;}
 
 
 

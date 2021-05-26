@@ -118,6 +118,23 @@ class ControllerCommonHeader extends Controller {
 			}
 		}
 
+		$this->load->model('catalog/manufacturer');
+
+		$manufacturers = $this->model_catalog_manufacturer->getManufacturers();
+
+		foreach ($manufacturers as $manufacturer) {
+			if (is_numeric(utf8_substr($manufacturer['name'], 0, 1))) {
+				$key = '0 - 9';
+			} else {
+				$key = utf8_substr(utf8_strtoupper($manufacturer['name']), 0, 1);
+			}
+
+			$data['manufacturers'][] = array(
+				'name' => $manufacturer['name'],
+				'href' => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $manufacturer['manufacturer_id'])
+			);
+		}
+
 		$data['items'] = $this->cart->countProducts();
 		
 		$data['home'] = $this->url->link('common/home');
@@ -141,6 +158,7 @@ class ControllerCommonHeader extends Controller {
 		$data['price'] = $this->url->link('news/category', 'path_news=12');
 		$data['project'] = $this->url->link('news/category', 'path_news=13');
 		$data['article'] = $this->url->link('information/optimblog');
+		$data['quote'] = $this->url->link('checkout/order');
 		$data['language'] = $this->load->controller('common/language');
 		$data['currency'] = $this->load->controller('common/currency');
 		$data['search'] = $this->load->controller('common/search');

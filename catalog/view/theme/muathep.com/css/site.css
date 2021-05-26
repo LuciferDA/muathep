@@ -147,7 +147,8 @@ button{border:none;outline:none}
 .nav li{border-left:1px solid #215d83;float:left;position:relative}
 .nav li:last-child{border-right:1px solid #215d83;}
 .nav li a{display:block; font-family: 'Sarabun', sans-serif;font-size:15px;font-weight:700;padding:0 30px;line-height:60px;position:relative;text-transform:uppercase;color:#fff}
-.nav li a:hover{background: #ec6d6d;}
+.nav li a:hover{: #ec6d6d;}
+.nav .get_quote a:hover{background: #ec6d6d;}
 .nav li.get_quote{float: right;position: absolute;right: 0px;background: #ff0202;}
 .nav li.get_quote a:hover{color:#fff;}
 .nav .sub_menu{display:none;position:absolute;top:100%;left:0;margin:12px 0 0;background:#152545;border-radius:5px;z-index:9999}

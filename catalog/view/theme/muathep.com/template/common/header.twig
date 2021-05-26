@@ -70,7 +70,8 @@
                   <link rel="stylesheet" type="text/css" href="catalog/view/theme/muathep.com/css/mobile.css" media="all" />
                   <link rel="stylesheet" type="text/css" href="catalog/view/theme/muathep.com/css/style.css" media="all" />
                   <link rel="stylesheet" type="text/css" href="catalog/view/theme/muathep.com/css/marketplace_mobile.css" media="all" />
-                  <link rel="stylesheet" type="text/css" href="https://steeloncall.com/skin/frontend/base/default/vss_loginizer/css/custom_popup.css" media="all" />
+                  <link rel="stylesheet" type="text/css" href="catalog/view/theme/muathep.com/css/custom_popup.css" media="all" />
+                  <link rel="stylesheet" type="text/css" href="catalog/view/theme/muathep.com/css/magebuzz/catsidebarnav/click.css" media="all" />
                   <script type="text/javascript" src="catalog/view/theme/muathep.com/js/prototype/prototype.js"></script>
                   <script type="text/javascript" src="catalog/view/theme/muathep.com/js/lib/jquery/jquery-1.10.2.min.js"></script>
                   <script type="text/javascript" src="catalog/view/theme/muathep.com/js/lib/jquery/noconflict.js"></script>
@@ -161,7 +162,7 @@
                         <div class="mobile_signin_register">
                            <ul>
                               <li class="signin"><a href="#" id="signin_form1" ><span class="mlc">Đăng nhập</span></a></li>
-                              <li class="get_quote"><a href="request-quote.html"> Báo giá</a></li>
+                              <li class="get_quote"><a href="{{quote}}"> Báo giá</a></li>
                            </ul>
                         </div>
                         <div class="mobile_quote_wrap">
@@ -219,25 +220,6 @@
                                              //]]>
                                           </script>
                                        </div>
-                                       <script type="text/javascript">
-                                          //<![CDATA[
-                                             var ajaxUrl='autocomplete/search/searchAutocomplete/{{base}}';
-                                             var queryDelay = 0.5;
-                                             var progressImage ='catalog/view/theme/muathep.com/images/ajax-loader.gif';
-                                             var minCharacters = '2';
-                                          
-                                             document.observe('dom:loaded',function(){
-                                                //require(["autocomplete"], function(){
-                                                   $$('.form-search')[0].insert({
-                                                      after:'<div id="search-autocomplete"><div id="searchr-result-containter"><div id="autocomplete-content"><div id="search-result"></div></div></div></div>'
-                                                   });
-                                                   $('searchr-result-containter').hide();
-                                                   var acLayout = new Autocomplete();
-                                                   acLayout.initAutocomplete(ajaxUrl, 'search-result');
-                                                //});
-                                             });
-                                          //]]>
-                                       </script>
                                     </form>
                                  </div>
                               </div>
@@ -252,7 +234,6 @@
                                        <div class="web-top-nav">
                                           <ul class="signin-register ">
                                              <li class="signin"><a href="javascript:void(0);" id="signin_form" ><span class="mlc">Tài Khoản</span></a></li>
-                                             <li class="support"><a href="javascript:void(0);" id="support_btn_desktop">Hỗ Trợ </a></li>
                                              
                                           </ul>
                                           <!-- Sign in model stars here -->
@@ -281,15 +262,13 @@
                                                    <div class="modal_contact">
                                                       <i class="sprite sprite-tele"></i>
                                                       <div class="model_content_right">
-                                                         <span>0912947499</span>
-                                                         <h6>Sun-Sat 10am-6pm</h6>
+                                                         <span>{{telephone}}</span>
                                                       </div>
                                                    </div>
                                                    <div class="modal_support">
                                                       <i class="sprite sprite-support_icon"></i>
                                                       <div class="model_content_right">
-                                                         <a href = "mailto: support&#64;steeloncall&#46;com">support&#64;steeloncall&#46;com</a>
-                                                         <h6>online support</h6>
+                                                         <a href = "mailto: {{email}}">{{email}}</a>
                                                       </div>
                                                    </div>
                                                 </div>
@@ -327,15 +306,13 @@
                                                    <div class="modal_contact">
                                                       <i class="sprite sprite-tele"></i>
                                                       <div class="model_content_right">
-                                                         <span>0912946499</span>
-                                                         <h6>Sun-Sat 10am-6pm</h6>
+                                                         <span>{{telephone}}</span>
                                                       </div>
                                                    </div>
                                                    <div class="modal_support">
                                                       <i class="sprite sprite-support_icon"></i>
                                                       <div class="model_content_right">
-                                                         <a href = "mailto: support&#64;steeloncall&#46;com">support&#64;steeloncall&#46;com</a>
-                                                         <h6>online support</h6>
+                                                         <a href = "mailto: {{email}}">{{email}}</a>
                                                       </div>
                                                    </div>
                                                 </div>
@@ -362,15 +339,13 @@
                                                    <div class="modal_contact">
                                                       <i class="sprite sprite-tele"></i>
                                                       <div class="model_content_right">
-                                                         <span>0912947499</span>
-                                                         <h6>Sun-Sat 10am-6pm</h6>
+                                                         <span>{{telephone}}</span>
                                                       </div>
                                                    </div>
                                                    <div class="modal_support">
                                                       <i class="sprite sprite-support_icon"></i>
                                                       <div class="model_content_right">
-                                                         <a href = "mailto: support&#64;steeloncall&#46;com">info@muathep.com</a>
-                                                         <h6>online support</h6>
+                                                         <a href = "mailto: {{email}}">{{email}}</a>
                                                       </div>
                                                    </div>
                                                 </div>
@@ -450,25 +425,6 @@
                                                             //]]>
                                                          </script>
                                                       </div>
-                                                      <script type="text/javascript">
-                                                         //<![CDATA[
-                                                            var ajaxUrl='autocomplete/search/searchAutocomplete/{{base}}';
-                                                            var queryDelay = 0.5;
-                                                            var progressImage ='catalog/view/theme/muathep.com/images/ajax-loader.gif';
-                                                            var minCharacters = '2';
-                                                         
-                                                            document.observe('dom:loaded',function(){
-                                                               //require(["autocomplete"], function(){
-                                                                  $$('.form-search')[0].insert({
-                                                                     after:'<div id="search-autocomplete"><div id="searchr-result-containter"><div id="autocomplete-content"><div id="search-result"></div></div></div></div>'
-                                                                  });
-                                                                  $('searchr-result-containter').hide();
-                                                                  var acLayout = new Autocomplete();
-                                                                  acLayout.initAutocomplete(ajaxUrl, 'search-result');
-                                                               //});
-                                                            });
-                                                         //]]>
-                                                      </script>
                                                    </form>
                                                 </div>
                                              </div>
@@ -499,12 +455,22 @@
                                              {% endfor %}
                                           {% endif %}
 
-                                          <li><a href="#">Nhà sản xuất</a></li>
+                                          <li>
+                                             <a href="#">Nhà sản xuất</a>
+                                             {% if manufacturers %}
+                                             <ul class="sub_menu">
+                                                {% for manufacturer in manufacturers %}
+                                                <li><a href="{{manufacturer.href}}">{{manufacturer.name}}</a></li>
+                                                {% endfor %}
+                                               
+                                             </ul>
+                                             {% endif %}
+                                          </li>
                                           <li><a href="#">Tin tức ngành thép </a></li>
                                           
                                           <!-- desktop -->
                                           <li><a href="#">Kho cung cấp </a></li>
-                                          <li class="get_quote"><a href="request-quote.html"> Tạo Báo Giá</a></li>
+                                          <li class="get_quote"><a href="{{quote}}"> Tạo Báo Giá</a></li>
                                        </ul>
                                        
                                        <script>

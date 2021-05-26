@@ -1,150 +1,381 @@
 {{header}}
+                     <div id="bodycon">
+                        <div class="container">
+                           <div class="contentBox contentWithSidebar">
+                              <div class="content-left prod_listing">
+                                 <div id="catalog-filters">
+                                    <div class="block block-category-nav block-layered-nav">
+                                       <div class="block-title">
+                                          <h3 class="titleh3"><span></span>Product Listing</h3>
+                                       </div>
+                                       <div class="block-content">
+                                          <ul id="category-sidebar-nav" class="category-sidebar-nav">
+                                             <li class="level0 nav-1 active level-top first last parent">
+                                                <a href="#" class="level-top">
+                                                <span>Category</span>
+                                                </a>
+                                                <a href="javascript:void(0)" class="right show-cat">&nbsp;
+                                                </a>
+                                                <ul class="level0">
+                                                  {% if categories %}
+                                                    {% for category in categories %}
+                                                       <li class="level1 nav-1-1 first">
+                                                          <a href="{{category.href}}" alt="{{category.name}}">
+                                                          <span>{{category.name}}</span>
+                                                          </a>
+                                                       </li> 
+                                                    {% endfor %}
+                                                  {% endif %}
+                                                </ul>
+                                             </li>
+                                          </ul>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="content-right">
+                                 <div class="main-container col2-left-layout">
+                                    <div class="main">
+                                       <div id="ptech_multilayer_container">
+                                          <style>
+                                             /* Style the tab */
+                                             .tab { overflow: hidden; border: 1px solid #ccc;  background-color: #f1f1f1;}
+                                             /* Style the buttons inside the tab */
+                                             .tab button {  background-color: inherit;  float: left;  border: none;  outline: none;  cursor: pointer;  padding: 14px 16px;  transition: 0.3s;  font-size: 17px; }
+                                             /* Change background color of buttons on hover */
+                                             .tab button:hover {  background-color: #ddd;}
+                                             /* Create an active/current tablink class */
+                                             .tab button.active {  background-color: #ccc;}
+                                             /* Style the tab content */
+                                             .tabcontent {  display: none;  padding: 6px 12px;  border: 1px solid #ccc;  border-top: none;}
+                                          </style>
+                                          <div class="cat-wrapper">
+                                             <div class="tab">
+                                                <h1>{{heading_title}}</h1>
+                                                <div class="tab_inner">
+                                                   <button class="tablinks"  id="defaultOpen" onclick="openCity(event, 'grid-view')"><img src="https://steeloncall.com/skin/frontend/rwd/steeloncall/images/tab_img1.png" alt="Grid View"></button>
+                                                   <button class="tablinks"  onclick="openCity(event, 'list-view')"><img src="https://steeloncall.com/skin/frontend/rwd/steeloncall/images/tab_img2.png" alt="List View"></button>  
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="category-products">
+                                                <div id="list-view" class="tabcontent">
 
-<div id="information-information" class="container">
-   <ul class="breadcrumb">
-  {% for breadcrumb in breadcrumbs %}
-      {% if loop.first %}
-     <li><a href="{{ breadcrumb.href }}"><i class="fa fa-home"></i></a></li>
-      {% else %}
-     <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a> <i class="fa fa-angle-double-right"></i> </li>
-     {% endif %}
-  {% endfor %}
-  </ul>
-   <div class="row">
-      {{ column_left }}
-    {% if column_left and column_right %}
-    {% set class = 'col-sm-6' %}
-    {% elseif column_left or column_right %}
-    {% set class = 'col-sm-9' %}
-    {% else %}
-    {% set class = 'col-sm-12' %}
-    {% endif %}
-      <div id="content" class="{{class}}">
-         <h2 class="page-title">{{heading_title}}</h2>
-         <div class="row category_thumb">
-            <div class="category_description">{{meta_description}}
-            {{description}}
+                                                </div>
+                                                <div id="grid-view" class="tabcontent">
+                                                   <div class="top-toolbar">
+                                                      <div class="toolbar">
+                                                         <div class="sorter">
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <ul class="products-grid">
+                                                      {% for product in products %}
+                                                              <li class="item first">
+                                                                 <div class="grid-item">
+                                                                    <div class="t_img gg"><a title="{{product.name}}" class="product-image"><img src="{{product.thumb}}" alt="{{product.name}}" /></a> </div>
+                                                                    <div class="price_total">
+                                                                       <div class="actions list_page" style="bottom: 135px;">
+                                                                          <span class="button btn-cart">
+                                                                          <code>
+                                                                             <kbd>Giá Từ <strong>{{product.price}}</strong>
+                                                                             </kbd>
+                                                                          </code>
+                                                                       </span>
+                                                                    </div>
+                                                                       <h5 class="product-name checkbox"> <a title="{{product.name}}">{{product.name}}n</a></h5>
+                                                                       <div class="ton-piece" id="list-price">
+                                                                          <p><input type="number" step="any"  name="ton[]"  class="tonne tonne-piece-1346"  data-prod="1346" data-ton-id="1346"  id="ton-products-1346"  data-proid='1346' autocomplete="off"  placeholder="Tấn" />                      
+                                                                             <span class="error" id="error_ton-products-1346" style="color: Red; display: none; font-size:12px;">* Input digits (1 - 9)</span> 
+                                                                          </p>
+                                                                          <p><input type="number" step="any"  name="piece[]" class="piece piece-products-1346 piece-ton-products-1346" data-pieceid="1346" id="piece-1346" autocomplete="off" placeholder="Cây" /><span class="error" id="error_piece-1346" style="color: Red; display: none; font-size:12px;">* Input digits (1 - 9)</span> </p>
+                                                                       </div>
+                                                                    </div>
+                                                                 </div>
+                                                              </li>
+                                                      {% endfor %}
+                                                   </ul>
+                                                   <div class="footer-toolbar">
+                                                      <div class="toolbar">
+                                                         <div class="sorter">
+                                                         </div>
+                                                      </div>
+                                                   </div> 
 
-              <div class="box-cate">
-                  {% if categories %}
-                    {% for category in categories %}
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                            <img src="{{category.thumb}}" alt="{{category.name}}">
-                            <a href="{{category.href}}">{{category.name}}</a>
-                        </div>  
-                    {% endfor %}
-                  {% endif %}
-              </div>
-            </div>
-         </div>
-         
-         <h3 class="refine-search">{{text_refine}}</h3>
-         <div class="category_filter">
-            <div class="col-md-4 btn-list-grid">
-               <div class="btn-group">
-                  <button type="button" id="grid-view" class="btn btn-default grid"  title="Grid"><i class="fa fa-th"></i></button>
-                  <button type="button" id="list-view" class="btn btn-default list" title="List"><i class="fa fa-th-list"></i></button>
-               </div>
-            </div>
-            <div class="compare-total"><a href="<?php echo $compare; ?>" id="compare-total">{{text_compare}}</a></div>
-            <div class="pagination-right">
-               <div class="sort-by-wrapper">
-                  <div class="col-md-2 text-right sort-by">
-                     <label class="control-label" for="input-sort">{{text_sort}}:</label>
-                  </div>
-                  <div class="col-md-3 text-right sort">
-                     <select id="input-sort" class="form-control" onchange="location = this.value;">
-                      {% for sorts in sorts %}
-                      {% if sorts.value == '%s-%s'|format(sort, order) %}
-                      <option value="{{ sorts.href }}" selected="selected">{{ sorts.text }}</option>
-                      {% else %}
-                      <option value="{{ sorts.href }}">{{ sorts.text }}</option>
-                      {% endif %}
-                      {% endfor %}
-                     </select>
-                  </div>
-               </div>
-               <div class="show-wrapper">
-                  <div class="col-md-1 text-right show">
-                     <label class="control-label" for="input-limit">{{text_limit}}:</label>
-                  </div>
-                  <div class="col-md-2 text-right limit">
-                     <select id="input-limit" class="form-control" onchange="location = this.value;">
-                        {% for limits in limits %}
-                        {% if limits.value == limit %}
-                        <option value="{{ limits.href }}" selected="selected">{{ limits.text }}</option>
-                        {% else %}
-                        <option value="{{ limits.href }}">{{ limits.text }}</option>
-                        {% endif %}
-                        {% endfor %}
-                     </select>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="product_combine">
-            {% for product in products %}
-            <div class="product-layout product-list col-xs-12">
-               <div class="product-block product-thumb">
-                  <div class="product-block-inner">
-                     <div class="image_cover">
-                        <div class="image ">
-                           <a href="{{product.href}}">
-                              <img src="{{product.thumb}}" title="{{product.name}}" alt="{{product.name}}" class="img-responsive reg-image"/>
-                           </a>
-                           {% if product.percent != 100 %}
-                            <span class="special-tag">{{product.percent}}%</span>
-                            {% endif %}
-                        </div>
-                        <div class="product_hover_block">
-                          <div class="action">
-                             <button class="wishlist" type="button"  title="Add to Wish List " onclick="wishlist.add('{{product.product_id}}');"></button>
-                             <button class="compare_button" type="button"  title="Add to compare " onclick="compare.add('{{product.product_id}}');"></button>
-                          </div>
-                        </div>
-                     </div>
-                     <div class="product-details">
-                           <div class="caption">
-                              <h4><a href="{{product.href}}">{{product.name}}</a></h4>
 
-                              <p class="price">
-                                  {% if product.special %}
-                                  <span class="price-new">{{product.special}}</span>
-                                  <span class="price-old">{{product.price}}</span>
-                                  {% else %}
-                                  {{product.price}}
-                                  {% endif %}
-                                  
-                               </p>
-                           </div>
-                           <div class="product_hover_block">
-                              <div class="action">
-                                 <button type="button" class="cart_button" onclick="cart.add('{{product.product_id}}');" title="<?php echo $button_cart;?>" >{{button_cart}}</button>
+                                                   <p class="proceed1" style="width:100%" >&nbsp; </p>
+                                                </div>
+                                          </div>
+                                          <script>   
+                                             jQuery('#btnButtonL').click(function(e){
+                                                 
+                                                // jQuery("#multiadd-list").submit();
+                                                 var isValid = false;
+                                                 jQuery('#list-view input.tonne[type="number"]').each(function() 
+                                             {  
+                                                    
+                                                     
+                                             var id =   jQuery(this).data('ton-id');      
+                                                     if (jQuery.trim(jQuery(this).val()) !='') {
+                                                         isValid = true;        
+                                             jQuery("#list-view #product-input-"+id).removeAttr('disabled');
+                                             jQuery("#list-view #piece-"+id).removeAttr("disabled");
+                                             jQuery("#list-view #ton-products-"+id).removeAttr('disabled');      
+                                                     }else {        
+                                             jQuery("#list-view #product-input-"+id).attr('disabled','disabled');
+                                             jQuery("#list-view #piece-"+id).attr('disabled','disabled');
+                                             jQuery("#list-view #ton-products-"+id).attr('disabled','disabled');
+                                                     }
+                                                 });
+                                             
+                                                 if (isValid == false){         
+                                                     jQuery('#list-view input.tonne[type="number"]').each(function() { 
+                                             var id =   jQuery(this).data('ton-id');      
+                                                     if (jQuery.trim(jQuery(this).val()) =='') {        
+                                             jQuery("#list-view #product-input-"+id).removeAttr('disabled');
+                                             jQuery("#list-view #piece-"+id).removeAttr("disabled");
+                                             jQuery("#list-view #ton-products-"+id).removeAttr('disabled');       
+                                             jQuery(this).css({
+                                                             "border": "1px solid red",
+                                                             "background": "#FFCECE"
+                                                         });
+                                             }
+                                             });
+                                                     
+                                             }else{
+                                                   jQuery("#multiadd-list").submit();
+                                             }
+                                             });
+                                             
+                                             jQuery('#btnButton').click(function(e) 
+                                             {
+                                                 var isValid = false;
+                                                 jQuery('#list-price input.tonne[type="number"]').each(function() 
+                                             {      
+                                             var id =   jQuery(this).data('ton-id');      
+                                                     if (jQuery.trim(jQuery(this).val()) !='') {
+                                                         isValid = true;        
+                                             jQuery("#product-input-"+id).removeAttr('disabled');
+                                             jQuery("#piece-"+id).removeAttr("disabled");
+                                             jQuery("#ton-products-"+id).removeAttr('disabled');       
+                                                     }else {        
+                                             jQuery("#product-input-"+id).attr('disabled','disabled');
+                                             jQuery("#piece-"+id).attr('disabled','disabled');
+                                             jQuery("#ton-products-"+id).attr('disabled','disabled');
+                                                     }
+                                                 });
+                                             
+                                                 if (isValid == false){         
+                                                     jQuery('#list-price input.tonne[type="number"]').each(function() {
+                                             var id =   jQuery(this).data('ton-id');      
+                                                     if (jQuery.trim(jQuery(this).val()) =='') {        
+                                             jQuery("#product-input-"+id).removeAttr('disabled');
+                                             jQuery("#piece-"+id).removeAttr("disabled");
+                                             jQuery("#ton-products-"+id).removeAttr('disabled');        
+                                             jQuery(this).css({
+                                                             "border": "1px solid red",
+                                                             "background": "#FFCECE"
+                                                         });
+                                             }
+                                             });
+                                             }else{
+                                                   jQuery("#multiadd").submit();
+                                             }
+                                             });
+                                             
+                                             function get_value()
+                                             {  
+                                             var isValid = true;
+                                             jQuery(".tonne").each(function() {
+                                             var element = jQuery(this);
+                                             if (element.val() == "") {
+                                             isValid = false;
+                                             }
+                                             else{
+                                             isValid = true;
+                                             }
+                                             }); 
+                                             alert(isValid);
+                                             console.log(isValid);
+                                             }
+                                          </script>
+                                          <script>
+                                             jQuery(function(jQuery)
+                                             {  
+                                              jQuery(this).val(jQuery(this).val().replace(/^(?!0(\.0*)?$)\d+(\.?\d{0,2})?$/));
+                                              
+                                              
+                                              jQuery('.tonne').keypress(function(event) {   
+                                                 var $this = jQuery(this);
+                                              id = this.id; 
+                                              var text = $this.val();
+                                                     
+                                                 if ((event.which != 46 || $this.val().indexOf('.') != -1) && ((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) {      
+                                                jQuery("#error_"+id).css("display", "block");
+                                                  event.preventDefault();
+                                                 }else{
+                                                jQuery("#error_"+id).css("display", "none");        
+                                              }
+                                              
+                                              if (event.which == 13) {
+                                                if((jQuery('#'+id).val() != '') && (jQuery('#'+id).val() != '')){
+                                                  var a = jQuery('#ton-products-'+id).val();      
+                                                         this.form.submit();
+                                                  jQuery("#error_"+id).css("display", "none");
+                                                         return false;
+                                                      }else if((jQuery('#'+id).value == '') && (jQuery('#'+id).value == '')){
+                                                  
+                                                 }
+                                              }
+                                              
+                                              /*if (this.value.length == 0 && event.which == 48 ){
+                                                jQuery("#error_"+id).css("display", "block");
+                                                     return false;
+                                                }*/
+                                                 //alert(text.indexOf('.')) 
+                                              if ((text.indexOf('.') != -1) && (text.substring(text.indexOf('.')).length > 3) && (event.which != 0 && event.which != 8) &&
+                                                     (jQuery(this)[0].selectionStart >= text.length - 2)) {
+                                                  jQuery("#error_"+id).css("display", "none");
+                                                         event.preventDefault();
+                                                 } 
+                                             });
+                                             
+                                             jQuery('.piece').keypress(function(event) {  
+                                                 id = this.id; 
+                                                 var $this = jQuery(this);
+                                              var text = $this.val();
+                                                 if (((event.which != 46 || $this.val().indexOf('.') != -1) && (event.which < 48 || event.which > 57) &&
+                                                    (event.which != 0 && event.which != 8))) {       
+                                                 jQuery("#error_"+id).css("display", "blok");
+                                                 event.preventDefault();
+                                                 }else{
+                                                jQuery("#error_"+id).css("display", "none");        
+                                              }
+                                              
+                                              if (event.which == 13) {
+                                                if((jQuery('#'+id).val() != '') && (jQuery('#'+id).val() != '')){
+                                                  var a = jQuery('#piece-'+id).val();     
+                                                         this.form.submit();
+                                                  jQuery("#error_"+id).css("display", "none");
+                                                         return false;
+                                                      }else if((jQuery('#'+id).value == '') && (jQuery('#'+id).value == '')){
+                                                  
+                                                 }
+                                              }
+                                              if((event.which == 46 || $this.val().indexOf('.') != -1)){
+                                                     jQuery("#error_"+id).css("display", "blok");
+                                                 event.preventDefault();
+                                                 }
+                                              if (this.value.length == 0 && event.which == 48 ){
+                                                jQuery("#error_"+id).css("display", "block");
+                                                     return false;
+                                                }
+                                                 if ((text.indexOf('.') != -1) && (text.substring(text.indexOf('.')).length > 3) && (event.which != 0 && event.which != 8) && (jQuery(this)[0].selectionStart >= text.length - 2)) {
+                                                  jQuery("#error_"+id).css("display", "none");
+                                                         event.preventDefault();
+                                                 }  
+                                             });
+                                             
+                                             });
+                                          </script>  
+                                          <script>
+                                             // you can use just jquery for this
+                                             jQuery(document).ready(function(jQuery){
+                                             jQuery('#overlay-back').fadeIn(500,function(){
+                                             jQuery('#popup').show();
+                                             });
+                                             
+                                             jQuery(".submit1").on('click', function() {
+                                              //alert(1);
+                                             jQuery('#popup').hide();
+                                             jQuery('#overlay-back').fadeOut(500);
+                                             //jQuery("#pin_code").val(jQuery("#availbility").val());
+                                             });
+                                             
+                                             
+                                             });
+                                          </script> 
+                                          <script>
+                                             function onlyNumber(fld) {
+                                                  if(fld.value.match(/[^0-9.]/)) {
+                                                      fld.value=fld.value.replace(/[^0-9.]/g,'');
+                                                  }
+                                             }
+                                             function convertUnit(tonn, kilo) {
+                                                 retValue = 0;
+                                             
+                                                 if (isNaN (kilo)) { alert ('Non-numeric value');  return 0; }
+                                                     kilo = parseFloat (kilo);
+                                                     var factor = 1000;
+                                             
+                                                 if (tonn == 'kgs2ton') {
+                                                      retValue = kilo/factor;
+                                                 }
+                                                 else if (tonn == 'ton2kgs') {
+                                                      retValue = kilo*factor;
+                                                 }
+                                             
+                                                 return retValue;
+                                             }
+                                          </script> 
+                                          <!-- For Grid and List tabs-->
+                                          <script>
+                                             function openCity(evt, cityName) {
+                                               var i, tabcontent, tablinks;
+                                               tabcontent = document.getElementsByClassName("tabcontent");
+                                               for (i = 0; i < tabcontent.length; i++) {
+                                                 tabcontent[i].style.display = "none";
+                                               }
+                                               tablinks = document.getElementsByClassName("tablinks");
+                                               for (i = 0; i < tablinks.length; i++) {
+                                                 tablinks[i].className = tablinks[i].className.replace(" active", "");
+                                               }
+                                               document.getElementById(cityName).style.display = "block";
+                                               evt.currentTarget.className += " active";
+                                             }
+                                             
+                                             // Get the element with id="defaultOpen" and click on it
+                                             document.getElementById("defaultOpen").click();
+                                          </script>
+                                          <script>
+                                             // DOM ready
+                                             jQuery(function() {
+                                               
+                                                 // Create the dropdown base
+                                                 jQuery("<select />").appendTo(".mobile-categories nav");
+                                                 
+                                                 // Create default option "Go to..."
+                                                 jQuery("<option />", {
+                                                    "selected": "selected",
+                                                    "value"   : "",
+                                                    "text"    : "Thép Cuộn"
+                                                 }).appendTo("nav select");
+                                                 
+                                                 // Populate dropdown with menu items
+                                                 jQuery(".mobile-categories nav a").each(function() {
+                                                  var el = jQuery(this);
+                                                  jQuery("<option />", {
+                                                      "value"   : el.attr("href"),
+                                                      "text"    : el.text()
+                                                  }).appendTo(".mobile-categories nav select");
+                                                 });
+                                                 
+                                               // To make dropdown actually work
+                                               // To make more unobtrusive: http://css-tricks.com/4064-unobtrusive-page-changer/
+                                                 jQuery(".mobile-categories nav select").change(function() {
+                                                   window.location = jQuery(this).find("option:selected").val();
+                                                 });
+                                             
+                                             });
+                                          </script>
+                                       </div>
+                                       <!--   <div class="myorders-addr"></div> -->
+                                    </div>
+                                 </div>
                               </div>
                            </div>
                         </div>
-                  </div>
-               </div>
-            </div>
-            <script> 
-               $('.total-review{{product.product_id}}').on('click', function() { 
-                var t='{{product.href}}'; 
-               const parseResult = new DOMParser().parseFromString(t, "text/html");
-               const parsedUrl = parseResult.documentElement.textContent;
-               window.location.href = parsedUrl + '&review';
-               return false;
-               });
-            </script>
-            {% endfor %}
-         </div>
-         <div class="pagination-wrapper">
-            <div class="col-sm-6 text-left page-link">
-               {{pagination}}
-            </div>
-            <div class="col-sm-6 text-right page-result">{{results}}</div>
-         </div>
-      </div>
-   </div>
+                     </div>
    {{content_bottom}}
 </div>
 {{footer}}
