@@ -1,0 +1,1 @@
+2021-05-31 9:30:09 - PHP Warning:  unlink(/Applications/Ampps/www/muathep/storage//cache/cache.length_class.2.1622453338): No such file or directory in /Applications/Ampps/www/muathep/system/library/cache/file.php on line 17

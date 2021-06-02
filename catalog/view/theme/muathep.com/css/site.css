@@ -73,8 +73,7 @@ button{border:none;outline:none}
     height: 29px; left:0px; top:0;}
 
 .web-top-nav ul li.signin a{ position:relative}
-.web-top-nav ul li.signin a:before{ content:' '; position:absolute; background:url(../images/h1.png) no-repeat top left;    width:29px;
-    height: 29px; left:0px; top:0;}
+.web-top-nav ul li.signin i{font-size:20px;}
 
 
 .web-top-nav ul li.get_quote a{ position:relative}

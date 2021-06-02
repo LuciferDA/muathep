@@ -207,6 +207,8 @@ class ControllerProductCategory extends Controller {
 					'tax'         => $tax,
 					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
 					'rating'      => $rating,
+					'weight'	  => $this->weight->getUnit($result['weight_class_id']),
+					'length'	  => $this->length->getUnit($result['length_class_id']),
 					'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url)
 				);
 			}
@@ -411,5 +413,34 @@ class ControllerProductCategory extends Controller {
 
 			$this->response->setOutput($this->load->view('error/not_found', $data));
 		}
+	}
+
+	public function convertWeightLenght(){
+
+
+		if (isset($this->request->post['product_id'])) {
+			$product_id = $this->request->post['product_id'];
+		} else {
+			$product_id = 0;
+		}
+
+		if (isset($this->request->post['value'])) {
+			$value = $this->request->post['value'];
+		} else {
+			$value = 0;
+		}
+
+		$this->load->model('catalog/product');
+
+		$product_info = $this->model_catalog_product->getProduct($product_id);
+
+		$length = $value / $product_info['weight'];
+
+
+		$json = array('value_convert' => round($length,3));
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+
 	}
 }

@@ -92,6 +92,7 @@ class ControllerCheckoutOrder extends Controller {
 		
 
 
+		$order_data['file_attach'] = $this->request->post['file_attach'];
 		$order_data['currency_code'] = 'VND';
 		$order_data['total_data'] = '0';
 		
@@ -185,7 +186,7 @@ class ControllerCheckoutOrder extends Controller {
 			$products = 0;
 		}
 
-		if(!empty($order_id) && !empty($last_product)){
+		if(!empty($order_id)){
 
 
 			$data['order_by_user'] = $this->model_checkout_order->getOrder($order_id);

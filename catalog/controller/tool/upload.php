@@ -69,6 +69,14 @@ class ControllerToolUpload extends Controller {
 
 			$json['code'] = $this->model_tool_upload->addUpload($filename, $file);
 
+
+
+			$json['filename'] = $this->model_tool_upload->getUploadByCode($json['code'])['filename'];
+
+			$json['name'] = $this->model_tool_upload->getUploadByCode($json['code'])['name'];
+
+			$json['linkfile'] = HTTP_SERVER.'storage/upload/'.$json['filename'];
+
 			$json['success'] = $this->language->get('text_upload');
 		}
 
