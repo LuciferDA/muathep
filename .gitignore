@@ -33,5 +33,5 @@ vqmod/mods.cache
 storage/modification/*
 storage/session/*
 storage/cache/*
-
-
+storage/upload/*
+storage/logs/*

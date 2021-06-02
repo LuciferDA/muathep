@@ -1,3 +1,129 @@
+                     <script>
+                        jQuery(window).load(function() {
+                          jQuery('.flexslider').flexslider({
+                            animation: "slide"
+                          });
+                        });
+                     </script>
+                     
+
+                     <div id="singupNewsletter">
+                        <div class="container">  </div>
+                     </div>
+                     <section id="signupnewsletter">
+                        <div class="container">
+                           <div class="signupnewsletter">
+                              <div class="signupnewletter-header">
+                                 <h3>Subscribe for Newsletter</h3>
+                                 <p>Learn about the latest trends in steel marketplace. We keep you informed about everything you should know.</p>
+                              </div>
+                              <div class="signupnewletter-form">
+                                 <!-- <input type="email" placeholder="Email">
+                                    <button type="button">Subscribe</button>-->
+                                 <div class="block block-subscribe">
+                                    <form action="javascript:void(0)" method="post" id="newsletter-validate-detail" onsubmit="myfunc();">
+                                       <div class="block-content">
+                                          <div class="input-box">
+                                             <input type="text" name="email" id="newsletter" placeholder="Email Address" title="Sign up for our newsletter" class="input-text required-entry validate-email" autocomplete="off" />
+                                             <div class="error-news-msg" id="error-news-msg" style="display:none;">Please Enter a valid email address.</div>
+                                             <div class="output" id="output"></div>
+                                          </div>
+                                          <div class="actions">
+                                             <button type="submit" title="Subscribe" class="button">Subscribe</button>  
+                                             <!--<input type="submit" value=" " class="submit">-->
+                                          </div>
+                                       </div>
+                                    </form>
+                                    <script type="text/javascript">
+                                       function myfunc()
+                                       {  
+                                          var newsletterSubscriberFormDetail = new VarienForm('newsletter-form');
+                                          var form_email = $('newsletter').getValue();
+                                          var params_form = $('newsletter-validate-detail');       
+                                          new Validation('newsletter');                        
+                                          if(echeck(form_email))                            
+                                          {  
+                                             new Ajax.Request( "index.html", {
+                                             method: "post",
+                                             parameters: {
+                                                email : form_email
+                                             },
+                                             onSuccess: function( transport ) {              
+                                                Element.hide('error-news-msg');           
+                                                var da = transport.responseText;
+                                                var dat = da.split("&&");              
+                                                $('output').innerHTML = dat[0];
+                                                if(dat[1]==1){
+                                                   Element.show('output'); 
+                                                    $('output').setAttribute("class", "success-msg");
+                                                   Element.hide.delay(10, 'output');
+                                                } else { 
+                                                    Element.show('output'); 
+                                                   $('output').setAttribute("class", "error-msg"); 
+                                                   Element.hide.delay(10, 'output');
+                                                }
+                                             }
+                                          });            
+                                             
+                                          } else {  return true;}
+                                       }
+                                       
+                                         function echeck(str) {
+                                             var at="@"
+                                             var dot="."
+                                             var lat=str.indexOf(at)
+                                             var lstr=str.length
+                                             var ldot=str.indexOf(dot)
+                                             if (str.indexOf(at)==-1){
+                                               goProcedural();
+                                                return false;
+                                             }
+                                       
+                                             if (str.indexOf(at)==-1 || str.indexOf(at)==0 || str.indexOf(at)==lstr){
+                                              goProcedural();
+                                                return false;
+                                             }
+                                       
+                                             if (str.indexOf(dot)==-1 || str.indexOf(dot)==0 || str.indexOf(dot)==lstr){
+                                                 goProcedural();
+                                                 return false;
+                                             }
+                                       
+                                              if (str.indexOf(at,(lat+1))!=-1){
+                                                goProcedural();
+                                                 return false;
+                                              }
+                                       
+                                              if (str.substring(lat-1,lat)==dot || str.substring(lat+1,lat+2)==dot){
+                                                 goProcedural();
+                                                 return false;
+                                              }
+                                       
+                                              if (str.indexOf(dot,(lat+2))==-1){
+                                                goProcedural();
+                                                 return false;
+                                              }
+                                             
+                                              if (str.indexOf(" ")!=-1){
+                                                 goProcedural();
+                                                 return false;
+                                              }
+                                               return true;                    
+                                         }
+                                         function goProcedural()
+                                       {
+                                        Element.hide('output');
+                                        $('error-news-msg').setAttribute("class", "validation-advice");
+                                           Element.show('error-news-msg');   
+                                           Element.hide.delay(10, 'error-news-msg');
+                                       }
+                                                                 
+                                    </script>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </section>
                      <footer id="main-footer">
                         <div class="container">
                            <div class="footer_new">
@@ -725,6 +851,67 @@
                      }
                      
                   </script>
+
+
+                     <script>
+                        jQuery(document).ready(function(){  
+                        jQuery(".menu-trigger").click(function(){       
+                        jQuery(".web-top-nav").css('display','none');
+                        jQuery(".web-nav").slideToggle(400,function(){          
+                          jQuery(this).toggleClass("nav-expanded").css('display', ' ');          
+                        });      
+                        });   
+                        });
+                        
+                        jQuery(document).ready(function(){  
+                        jQuery(".menu-trigger4").click(function(){
+                        jQuery(".Hnav").css('display','none');    
+                        jQuery(".web-top-nav").slideToggle(400,function(){         
+                          jQuery(this).toggleClass("nav-expanded").css('display', ' ');          
+                        });      
+                        });   
+                        });
+                        
+                        jQuery(document).ready(function(){  
+                        jQuery(".fin").click(function(){
+                        jQuery(this).css('display','none');
+                        jQuery(this).prev(".closed").css('display','block');
+                        jQuery(".closed").click(function(){
+                           jQuery(this).fadeOut();
+                           jQuery(this).next(".fin").css('display','inline-block');
+                           jQuery(this).next(".fin").next(".fincontent").css('display','none');
+                        
+                           });
+                        jQuery(this).next(".fincontent").slideToggle(400,function(){
+                        });      
+                        });   
+                        });
+                     </script>
+                     <script>
+                        jQuery(window).load(function() {
+                          jQuery('.flexslider').flexslider({
+                            animation: "fade"
+                          });
+                        });
+                     </script>
+                     <script>
+                        jQuery(document).ready(function(){
+                            jQuery('#signin_form').click(function(){
+                              //alert("hello");
+                              jQuery('#vss_solo_blank').css('display','block');
+                              
+                              });
+                           jQuery('#signin_form1').click(function(){
+                              jQuery('#vss_solo_blank').css('display','block');
+                              
+                              });
+                        });
+                        /*$( "#clickme" ).click(function() {
+                          $( "#book" ).toggle( "slow", function() {
+                            // Animation complete.
+                          });
+                        });*/
+                     </script>
                   <style>
                      /*    #vss_solo_blank{
                      display:none; position:fixed;top:0px;left: 0px; width:100%;height: 100%;z-index: 1000; 

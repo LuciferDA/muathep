@@ -164,8 +164,6 @@ class ModelSaleOrder extends Model {
 			}
 		} elseif (isset($data['filter_order_status_id']) && $data['filter_order_status_id'] !== '') {
 			$sql .= " WHERE o.order_status_id = '" . (int)$data['filter_order_status_id'] . "'";
-		} else {
-			$sql .= " WHERE o.order_status_id > '0'";
 		}
 
 		if (!empty($data['filter_order_id'])) {

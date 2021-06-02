@@ -1111,8 +1111,54 @@ div#data {
 .error{padding:160px; text-align:center;}
 .error p {font-family: 'Poppins',sans-serif; font-size:28px;}
 .error a {font-family: 'Poppins',sans-serif; font-size:15px;}
+.search-header{float: left; width: 750px;}
+.search-header input {
+    border: 1px solid #172545;
+    height: 38px;
+    width: 290px;
+    border-radius: 10px;
+    /* font-size: 1px; */
+    padding: 8px;
+}
+.search-header input::-webkit-input-placeholder {
+    font-size:14px;
+}
+.custom-file-input {
+  color: transparent;
+}
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: "\f0c6  Tải lên file khối lượng";
+  color: black;
+  display: inline-block;
+  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 20px;
+  padding: 15px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 10pt;
+  margin: 16px;
+  font-family: 'Poppins',sans-serif,"Font Awesome 5 Free";
+}
 
-
+.custom-file-input::after {
+  content: "Tải lên file khối lượng";
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active {
+  outline: 0;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+}
 
 
 

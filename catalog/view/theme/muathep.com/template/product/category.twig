@@ -49,330 +49,66 @@
                                              /* Style the tab content */
                                              .tabcontent {  display: none;  padding: 6px 12px;  border: 1px solid #ccc;  border-top: none;}
                                           </style>
-                                          <div class="cat-wrapper">
-                                             <div class="tab">
-                                                <h1>{{heading_title}}</h1>
-                                                <div class="tab_inner">
-                                                   <button class="tablinks"  id="defaultOpen" onclick="openCity(event, 'grid-view')"><img src="https://steeloncall.com/skin/frontend/rwd/steeloncall/images/tab_img1.png" alt="Grid View"></button>
-                                                   <button class="tablinks"  onclick="openCity(event, 'list-view')"><img src="https://steeloncall.com/skin/frontend/rwd/steeloncall/images/tab_img2.png" alt="List View"></button>  
-                                                </div>
-                                             </div>
-                                          </div>
                                           <div class="category-products">
-                                                <div id="list-view" class="tabcontent">
+                                                <div id="list-view">
+                                                   <div class="list_products" style="margin-top: 80px;">
+                                                      <table>
+                                                         <tbody>
+                                                            {% for product in products %}
+                                                            <tr>
+                                                               <li class="item first">
+                                                                  <div class="list-item">
+                                                                     <div class="price_total">
+                                                                        <input type="hidden"  name="products[]" disabled>
+                                                                        <td>
+                                                                           <h6> <a title="{{product.name}}">{{product.name}}</a></h6>
+                                                                        </td>
+                                                                        <td>
+                                                                           <div class="actions list_page" style="bottom: 135px;"><span class="button btn-cart"><code><kbd>Giá Từ <strong>{{product.price}}</strong></kbd></code></span></div>
+                                                                        </td>
+                                                                        <div class="ton-piece" id="list-price-L">
+                                                                           <td>
+                                                                              <p><input type="number" step="any"  name="weight[]"  class="weight weight_{{product.product_id}}"  data-prod="{{product.product_id}}" autocomplete="off"  placeholder="{{product.weight}}" /></p>
+                                                                           </td>
+                                                                           <!--<span class="catalog_or">(OR) </span>-->   
+                                                                           <td>
+                                                                              <p><input type="number" step="any"  name="length[]" pattern="0-9" class="length length_{{product.product_id}}" data-prod="{{product.product_id}}" autocomplete="off" placeholder="{{product.length}}" /></p>
+                                                                           </td>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                               </li>
+                                                            </tr>
+                                                            {% endfor %}
 
-                                                </div>
-                                                <div id="grid-view" class="tabcontent">
-                                                   <div class="top-toolbar">
-                                                      <div class="toolbar">
-                                                         <div class="sorter">
-                                                         </div>
-                                                      </div>
+                                                         </tbody>
+                                                      </table>   
                                                    </div>
-                                                   <ul class="products-grid">
-                                                      {% for product in products %}
-                                                              <li class="item first">
-                                                                 <div class="grid-item">
-                                                                    <div class="t_img gg"><a title="{{product.name}}" class="product-image"><img src="{{product.thumb}}" alt="{{product.name}}" /></a> </div>
-                                                                    <div class="price_total">
-                                                                       <div class="actions list_page" style="bottom: 135px;">
-                                                                          <span class="button btn-cart">
-                                                                          <code>
-                                                                             <kbd>Giá Từ <strong>{{product.price}}</strong>
-                                                                             </kbd>
-                                                                          </code>
-                                                                       </span>
-                                                                    </div>
-                                                                       <h5 class="product-name checkbox"> <a title="{{product.name}}">{{product.name}}n</a></h5>
-                                                                       <div class="ton-piece" id="list-price">
-                                                                          <p><input type="number" step="any"  name="ton[]"  class="tonne tonne-piece-1346"  data-prod="1346" data-ton-id="1346"  id="ton-products-1346"  data-proid='1346' autocomplete="off"  placeholder="Tấn" />                      
-                                                                             <span class="error" id="error_ton-products-1346" style="color: Red; display: none; font-size:12px;">* Input digits (1 - 9)</span> 
-                                                                          </p>
-                                                                          <p><input type="number" step="any"  name="piece[]" class="piece piece-products-1346 piece-ton-products-1346" data-pieceid="1346" id="piece-1346" autocomplete="off" placeholder="Cây" /><span class="error" id="error_piece-1346" style="color: Red; display: none; font-size:12px;">* Input digits (1 - 9)</span> </p>
-                                                                       </div>
-                                                                    </div>
-                                                                 </div>
-                                                              </li>
-                                                      {% endfor %}
-                                                   </ul>
-                                                   <div class="footer-toolbar">
-                                                      <div class="toolbar">
-                                                         <div class="sorter">
-                                                         </div>
-                                                      </div>
-                                                   </div> 
-
-
-                                                   <p class="proceed1" style="width:100%" >&nbsp; </p>
                                                 </div>
                                           </div>
-                                          <script>   
-                                             jQuery('#btnButtonL').click(function(e){
-                                                 
-                                                // jQuery("#multiadd-list").submit();
-                                                 var isValid = false;
-                                                 jQuery('#list-view input.tonne[type="number"]').each(function() 
-                                             {  
-                                                    
-                                                     
-                                             var id =   jQuery(this).data('ton-id');      
-                                                     if (jQuery.trim(jQuery(this).val()) !='') {
-                                                         isValid = true;        
-                                             jQuery("#list-view #product-input-"+id).removeAttr('disabled');
-                                             jQuery("#list-view #piece-"+id).removeAttr("disabled");
-                                             jQuery("#list-view #ton-products-"+id).removeAttr('disabled');      
-                                                     }else {        
-                                             jQuery("#list-view #product-input-"+id).attr('disabled','disabled');
-                                             jQuery("#list-view #piece-"+id).attr('disabled','disabled');
-                                             jQuery("#list-view #ton-products-"+id).attr('disabled','disabled');
-                                                     }
-                                                 });
-                                             
-                                                 if (isValid == false){         
-                                                     jQuery('#list-view input.tonne[type="number"]').each(function() { 
-                                             var id =   jQuery(this).data('ton-id');      
-                                                     if (jQuery.trim(jQuery(this).val()) =='') {        
-                                             jQuery("#list-view #product-input-"+id).removeAttr('disabled');
-                                             jQuery("#list-view #piece-"+id).removeAttr("disabled");
-                                             jQuery("#list-view #ton-products-"+id).removeAttr('disabled');       
-                                             jQuery(this).css({
-                                                             "border": "1px solid red",
-                                                             "background": "#FFCECE"
-                                                         });
-                                             }
-                                             });
-                                                     
-                                             }else{
-                                                   jQuery("#multiadd-list").submit();
-                                             }
-                                             });
-                                             
-                                             jQuery('#btnButton').click(function(e) 
-                                             {
-                                                 var isValid = false;
-                                                 jQuery('#list-price input.tonne[type="number"]').each(function() 
-                                             {      
-                                             var id =   jQuery(this).data('ton-id');      
-                                                     if (jQuery.trim(jQuery(this).val()) !='') {
-                                                         isValid = true;        
-                                             jQuery("#product-input-"+id).removeAttr('disabled');
-                                             jQuery("#piece-"+id).removeAttr("disabled");
-                                             jQuery("#ton-products-"+id).removeAttr('disabled');       
-                                                     }else {        
-                                             jQuery("#product-input-"+id).attr('disabled','disabled');
-                                             jQuery("#piece-"+id).attr('disabled','disabled');
-                                             jQuery("#ton-products-"+id).attr('disabled','disabled');
-                                                     }
-                                                 });
-                                             
-                                                 if (isValid == false){         
-                                                     jQuery('#list-price input.tonne[type="number"]').each(function() {
-                                             var id =   jQuery(this).data('ton-id');      
-                                                     if (jQuery.trim(jQuery(this).val()) =='') {        
-                                             jQuery("#product-input-"+id).removeAttr('disabled');
-                                             jQuery("#piece-"+id).removeAttr("disabled");
-                                             jQuery("#ton-products-"+id).removeAttr('disabled');        
-                                             jQuery(this).css({
-                                                             "border": "1px solid red",
-                                                             "background": "#FFCECE"
-                                                         });
-                                             }
-                                             });
-                                             }else{
-                                                   jQuery("#multiadd").submit();
-                                             }
-                                             });
-                                             
-                                             function get_value()
-                                             {  
-                                             var isValid = true;
-                                             jQuery(".tonne").each(function() {
-                                             var element = jQuery(this);
-                                             if (element.val() == "") {
-                                             isValid = false;
-                                             }
-                                             else{
-                                             isValid = true;
-                                             }
-                                             }); 
-                                             alert(isValid);
-                                             console.log(isValid);
-                                             }
-                                          </script>
-                                          <script>
-                                             jQuery(function(jQuery)
-                                             {  
-                                              jQuery(this).val(jQuery(this).val().replace(/^(?!0(\.0*)?$)\d+(\.?\d{0,2})?$/));
-                                              
-                                              
-                                              jQuery('.tonne').keypress(function(event) {   
-                                                 var $this = jQuery(this);
-                                              id = this.id; 
-                                              var text = $this.val();
-                                                     
-                                                 if ((event.which != 46 || $this.val().indexOf('.') != -1) && ((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) {      
-                                                jQuery("#error_"+id).css("display", "block");
-                                                  event.preventDefault();
-                                                 }else{
-                                                jQuery("#error_"+id).css("display", "none");        
-                                              }
-                                              
-                                              if (event.which == 13) {
-                                                if((jQuery('#'+id).val() != '') && (jQuery('#'+id).val() != '')){
-                                                  var a = jQuery('#ton-products-'+id).val();      
-                                                         this.form.submit();
-                                                  jQuery("#error_"+id).css("display", "none");
-                                                         return false;
-                                                      }else if((jQuery('#'+id).value == '') && (jQuery('#'+id).value == '')){
-                                                  
-                                                 }
-                                              }
-                                              
-                                              /*if (this.value.length == 0 && event.which == 48 ){
-                                                jQuery("#error_"+id).css("display", "block");
-                                                     return false;
-                                                }*/
-                                                 //alert(text.indexOf('.')) 
-                                              if ((text.indexOf('.') != -1) && (text.substring(text.indexOf('.')).length > 3) && (event.which != 0 && event.which != 8) &&
-                                                     (jQuery(this)[0].selectionStart >= text.length - 2)) {
-                                                  jQuery("#error_"+id).css("display", "none");
-                                                         event.preventDefault();
-                                                 } 
-                                             });
-                                             
-                                             jQuery('.piece').keypress(function(event) {  
-                                                 id = this.id; 
-                                                 var $this = jQuery(this);
-                                              var text = $this.val();
-                                                 if (((event.which != 46 || $this.val().indexOf('.') != -1) && (event.which < 48 || event.which > 57) &&
-                                                    (event.which != 0 && event.which != 8))) {       
-                                                 jQuery("#error_"+id).css("display", "blok");
-                                                 event.preventDefault();
-                                                 }else{
-                                                jQuery("#error_"+id).css("display", "none");        
-                                              }
-                                              
-                                              if (event.which == 13) {
-                                                if((jQuery('#'+id).val() != '') && (jQuery('#'+id).val() != '')){
-                                                  var a = jQuery('#piece-'+id).val();     
-                                                         this.form.submit();
-                                                  jQuery("#error_"+id).css("display", "none");
-                                                         return false;
-                                                      }else if((jQuery('#'+id).value == '') && (jQuery('#'+id).value == '')){
-                                                  
-                                                 }
-                                              }
-                                              if((event.which == 46 || $this.val().indexOf('.') != -1)){
-                                                     jQuery("#error_"+id).css("display", "blok");
-                                                 event.preventDefault();
-                                                 }
-                                              if (this.value.length == 0 && event.which == 48 ){
-                                                jQuery("#error_"+id).css("display", "block");
-                                                     return false;
-                                                }
-                                                 if ((text.indexOf('.') != -1) && (text.substring(text.indexOf('.')).length > 3) && (event.which != 0 && event.which != 8) && (jQuery(this)[0].selectionStart >= text.length - 2)) {
-                                                  jQuery("#error_"+id).css("display", "none");
-                                                         event.preventDefault();
-                                                 }  
-                                             });
-                                             
-                                             });
-                                          </script>  
-                                          <script>
-                                             // you can use just jquery for this
-                                             jQuery(document).ready(function(jQuery){
-                                             jQuery('#overlay-back').fadeIn(500,function(){
-                                             jQuery('#popup').show();
-                                             });
-                                             
-                                             jQuery(".submit1").on('click', function() {
-                                              //alert(1);
-                                             jQuery('#popup').hide();
-                                             jQuery('#overlay-back').fadeOut(500);
-                                             //jQuery("#pin_code").val(jQuery("#availbility").val());
-                                             });
-                                             
-                                             
-                                             });
-                                          </script> 
-                                          <script>
-                                             function onlyNumber(fld) {
-                                                  if(fld.value.match(/[^0-9.]/)) {
-                                                      fld.value=fld.value.replace(/[^0-9.]/g,'');
-                                                  }
-                                             }
-                                             function convertUnit(tonn, kilo) {
-                                                 retValue = 0;
-                                             
-                                                 if (isNaN (kilo)) { alert ('Non-numeric value');  return 0; }
-                                                     kilo = parseFloat (kilo);
-                                                     var factor = 1000;
-                                             
-                                                 if (tonn == 'kgs2ton') {
-                                                      retValue = kilo/factor;
-                                                 }
-                                                 else if (tonn == 'ton2kgs') {
-                                                      retValue = kilo*factor;
-                                                 }
-                                             
-                                                 return retValue;
-                                             }
-                                          </script> 
-                                          <!-- For Grid and List tabs-->
-                                          <script>
-                                             function openCity(evt, cityName) {
-                                               var i, tabcontent, tablinks;
-                                               tabcontent = document.getElementsByClassName("tabcontent");
-                                               for (i = 0; i < tabcontent.length; i++) {
-                                                 tabcontent[i].style.display = "none";
-                                               }
-                                               tablinks = document.getElementsByClassName("tablinks");
-                                               for (i = 0; i < tablinks.length; i++) {
-                                                 tablinks[i].className = tablinks[i].className.replace(" active", "");
-                                               }
-                                               document.getElementById(cityName).style.display = "block";
-                                               evt.currentTarget.className += " active";
-                                             }
-                                             
-                                             // Get the element with id="defaultOpen" and click on it
-                                             document.getElementById("defaultOpen").click();
-                                          </script>
-                                          <script>
-                                             // DOM ready
-                                             jQuery(function() {
-                                               
-                                                 // Create the dropdown base
-                                                 jQuery("<select />").appendTo(".mobile-categories nav");
-                                                 
-                                                 // Create default option "Go to..."
-                                                 jQuery("<option />", {
-                                                    "selected": "selected",
-                                                    "value"   : "",
-                                                    "text"    : "Thép Cuộn"
-                                                 }).appendTo("nav select");
-                                                 
-                                                 // Populate dropdown with menu items
-                                                 jQuery(".mobile-categories nav a").each(function() {
-                                                  var el = jQuery(this);
-                                                  jQuery("<option />", {
-                                                      "value"   : el.attr("href"),
-                                                      "text"    : el.text()
-                                                  }).appendTo(".mobile-categories nav select");
-                                                 });
-                                                 
-                                               // To make dropdown actually work
-                                               // To make more unobtrusive: http://css-tricks.com/4064-unobtrusive-page-changer/
-                                                 jQuery(".mobile-categories nav select").change(function() {
-                                                   window.location = jQuery(this).find("option:selected").val();
-                                                 });
-                                             
-                                             });
-                                          </script>
                                        </div>
                                        <!--   <div class="myorders-addr"></div> -->
                                     </div>
                                  </div>
                               </div>
+
+                              <script>
+                                 /*jQuery('#vss_solo_login_email').keyup(function(){*/
+                                 jQuery(".weight").on("keyup", function (e) {
+                                    var product_id = jQuery(this).attr('data-prod');
+
+                                    var value = jQuery(this).val();
+
+                                    jQuery.ajax({
+                                       url: "index.php?route=product/category/convertWeightLenght",
+                                       type: "POST",
+                                       data: "product_id="+product_id+"&value="+value,
+                                       success: function(data) {
+                                          jQuery(".length_"+product_id).val(data.value_convert)
+                                       }
+                                    });
+                                 });
+                              </script>                              
                            </div>
                         </div>
                      </div>

@@ -65,6 +65,24 @@ class ControllerCommonHome extends Controller {
 				);
 		}
 
+		$this->load->model('catalog/manufacturer');
+
+		$manufacturers = $this->model_catalog_manufacturer->getManufacturers();
+
+		foreach ($manufacturers as $manufacturer) {
+			if (is_numeric(utf8_substr($manufacturer['name'], 0, 1))) {
+				$key = '0 - 9';
+			} else {
+				$key = utf8_substr(utf8_strtoupper($manufacturer['name']), 0, 1);
+			}
+
+			$data['manufacturers'][] = array(
+				'name' => $manufacturer['name'],
+				'href' => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $manufacturer['manufacturer_id']),
+				'image' => $this->model_tool_image->resize($manufacturer['image'], '230', '100')
+			);
+		}
+
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
 		$data['content_top'] = $this->load->controller('common/content_top');
