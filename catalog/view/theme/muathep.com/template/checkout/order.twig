@@ -27,7 +27,7 @@
                                       <input type="email" name="email" required autocomplete="off"  placeholder="Email-ID"/>
                                    </p>
                                    <p class="input-box">
-                                      <input class="number_font" type="text" name="mobile_number" id="phone" maxlength="10" required autocomplete="off"  placeholder="Số Điện Thoại"/>
+                                      <input class="number_font" type="text" name="mobile_number"  maxlength="10" required autocomplete="off"  placeholder="Số Điện Thoại"/>
                                    </p>
                                    <p class="input-box">
                                       <input type="text" name="address" id="address" required autocomplete="off" placeholder="Địa Chỉ" />
@@ -51,12 +51,10 @@
                                 </fieldset>
                                 <h3>Thông Tin Đơn Hàng</h3>
                                 <fieldset>
-                                   <div class="add_products"><span id="add_product">Thêm sản phẩm</span> </div>
-
-
                                    <div class="add_file">
                                       <input type="file" id="file" name="file" class="custom-file-input">
                                    </div>
+                                   <div class="add_products"><span id="add_product">Thêm sản phẩm</span> </div>
                                    <div id="containerAlertMessages"></div>
                                    <div id="data">
                                       <table id='productData' has-product="0">
@@ -341,7 +339,18 @@ jQuery("#file").on('change',function($) {
       success: function(data) {
         jQuery("#containerAlertMessages").html("<div id='alertMessages' class='alert alert-success'><strong>Tệp "+data['name']+" </strong> đã được tải lên thành công!</div>");
         jQuery('#file_attach').val(data['code']);
-        jQuery("#viewfile").html("<iframe src='https://view.officeapps.live.com/op/embed.aspx?src="+data['linkfile']+"' width='100%' height='300px' frameborder='0'></iframe>");
+
+        if(data['type'] == 'pdf'){
+            jQuery("#viewfile").html("<embed src='"+data['linkfile']+"' width='100%' height='500' type='application/pdf' >");
+        }
+        else {
+          if(data['type'] == 'image'){
+            jQuery("#viewfile").html("<image src='"+data['linkfile']+"' width='100%' />");
+          }
+          else{
+              jQuery("#viewfile").html("<iframe src='https://view.officeapps.live.com/op/embed.aspx?src="+data['linkfile']+"' width='100%' height='500px' frameborder='0'></iframe>");
+          }
+        }
         jQuery(".noproduct").css('display','none');
 
       }

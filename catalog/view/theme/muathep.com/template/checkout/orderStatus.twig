@@ -28,7 +28,7 @@
                                 <td>{{order_by_user.payment_address_1}}</td>
                             </tr>
                         </table>
-
+                        {% if products_order %}
                         <table>
 
                           <thead>
@@ -56,11 +56,8 @@
                           </tbody>
 
                         </table>
+                        {% endif %}
                         </div>
-
-                        <p class="cmsubmit input-box">
-                          <button class="btn_dowload_pdf" id="gpdf">Tải xuống pdf</button>
-                        </p>
                     </div>
                     </p>
                  </div>

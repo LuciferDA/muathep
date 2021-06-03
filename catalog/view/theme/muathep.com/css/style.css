@@ -1159,6 +1159,14 @@ div#data {
 .custom-file-input:active::before {
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
 }
-
+.add_file{float:left;}
+#alertMessages{
+    width: 100%;
+    float: left;
+    /* background: #31c0ea; */
+    color: #0f3190;
+    font-size: 20px;
+    margin: 16px 0px;
+}
 
 

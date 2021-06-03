@@ -74,6 +74,15 @@ class ControllerToolUpload extends Controller {
 			$json['filename'] = $this->model_tool_upload->getUploadByCode($json['code'])['filename'];
 
 			$json['name'] = $this->model_tool_upload->getUploadByCode($json['code'])['name'];
+			if(strpos($this->request->files['file']['type'], 'pdf') != false){
+				$json['type'] = 'pdf';
+			}else{
+				if(strpos($this->request->files['file']['type'], 'jpeg') != false || strpos($this->request->files['file']['type'], 'png') != false){
+					$json['type'] = 'image';
+				}else{
+					$json['type'] = 'office';
+				}
+			}
 
 			$json['linkfile'] = HTTP_SERVER.'storage/upload/'.$json['filename'];
 
