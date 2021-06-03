@@ -792,7 +792,16 @@ class ControllerSaleOrder extends Controller {
 
 			$data['store_id'] = $order_info['store_id'];
 			$data['store_name'] = $order_info['store_name'];
-			
+
+
+			$this->load->model('tool/upload');
+
+			$file['filename'] = $this->model_tool_upload->getUploadByCode($order_info['file_attach'])['filename'];
+
+
+			$data['linkfile'] = HTTP_SERVER.'../storage/upload/'.$file['filename'];
+
+
 			if ($order_info['store_id'] == 0) {
 				$data['store_url'] = $this->request->server['HTTPS'] ? HTTPS_CATALOG : HTTP_CATALOG;
 			} else {
