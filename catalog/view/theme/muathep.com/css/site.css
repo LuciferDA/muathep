@@ -580,8 +580,8 @@ p.ret-pad{ padding-left: 30px; display: flex;}
 .blog_inner_c .post_date span{ background:#31C0EC; padding:20px; border-radius: 10px; font-size: 20px; font-family: 'Sarabun', sans-serif; color: #fff; font-weight:500; display: block; text-align:center;}
 .blog_inner_c .post_date span strong{ display:block;font-family: 'Sarabun', sans-serif; color: #fff; font-size: 64px; font-weight:400; line-height:64px; }
 .bl_cont{margin-left: auto; padding-left:20px;}
-.bl_cont h4{font-family: 'Sarabun', sans-serif; font-size: 25px; margin-bottom:10px;color:#333; font-weight: 400; line-height: 30px;}
-.bl_cont p{font-family: 'Sarabun', sans-serif; font-size: 16px; margin-bottom:10px;color:#152545;font-weight: 400; line-height:24px;}
+.bl_cont h4{ font-size: 19px; margin-bottom:10px;color:#333; font-weight: 400; line-height: 30px;}
+.bl_cont p{font-size: 14px; margin-bottom:10px;color:#152545;font-weight: 400; line-height:24px;}
 .bl_cont h4 a{color:#333;}
 .bl_cont h4 a:hover{ color:#31C0EC;}
 .blog-con{padding:34px 28px 24px}
@@ -733,8 +733,8 @@ html{overflow-x:hidden}
 #signin_modal,#signin_modal2,#forget_password,#support_modal,#support_modal_desktop{text-align:center}
 .modal-content .model_form{clear:both;display:block;padding:9px 0 35px}
 #support_modal .modal-content .model_form,#support_modal_desktop .modal-content .model_form{max-width:390px;margin:0 auto;text-align:left}
-.modal-content .model_form h3{font-weight:700;font-size:30px;color:#31c0ec;text-transform:capitalize;margin:0 0 32px;padding:0; text-align:center;}
-.vss_solo_head h2{font-weight:700;font-size:30px;color:#31c0ec;text-transform:capitalize;margin:0 0 25px;padding:0}
+.modal-content .model_form h3{font-weight:700;font-size:30px;color:#111e3b;text-transform:capitalize;margin:0 0 32px;padding:0; text-align:center;}
+.vss_solo_head h2{font-weight:700;font-size:30px;color:#111e3b;text-transform:capitalize;margin:0 0 25px;padding:0}
 .vss_margin{margin:0 0 14px}
 #vss_solo_signup_form .vss_margin #vss_solo_signup_pass{margin:0 0 14px}
 .vss_solo_submit{text-transform:uppercase;color:#fff; background-color:#152545;border-radius:50px!important;border:none;outline:none; 
@@ -837,7 +837,7 @@ html{overflow-x:hidden}
 #popup1 .content input[type="number"]{background:#f7f7f7;border-radius:25px!important;border:none;font-weight:700;font-size:16px;color:#8791a6;height:60px;line-height:60px;width:100%;max-width:inherit;box-sizing:border-box;padding:0 0 0 40px}
 #popup1 .content .vss_right{margin:30px 0 0}
 .cms-home #bodycon{padding-top:0}
-.getquote h2{text-align:center;font-size:34px;font-weight:700;color:#31c0ec;text-transform:capitalize;margin:0 0 32px;padding:0}
+.getquote h2{text-align:center;font-size:34px;font-weight:700;color:#0f3190;text-transform:capitalize;margin:0 0 32px;padding:0}
 .getquote .rwsform_inner{margin:0 0 30px 0;}
 
 #bodycon .getquote .rwsform h3{font-weight:700;font-size:28px;color:#152545;margin:0 0 30px;padding:0; text-transform:capitalize;}
@@ -1255,7 +1255,7 @@ border-radius: 12px;-moz-box-shadow: 1px 1px 3px #000;	-webkit-box-shadow: 1px 1
     .footer-menu-box ul.fs-menu{ display:flex;}
     .footer-menu-box ul.fs-menu li{ margin:0 0.416vw 0 0;}
     .footer-menu-box ul.fs-menu li a img{ width:2.5vw; height:2.5vw;}
-    #signupnewsletter{ background:#31c0ec; text-align: center; padding:2.6041vw 0 2.2395vw 0;}
+    #signupnewsletter{ background:#1d58ff; text-align: center; padding:2.6041vw 0 2.2395vw 0;}
     #signupnewsletter .container{ max-width:57.916vw;}
     .signupnewletter-header h3{ font-size: 45px; color:#fff; font-weight: normal; text-transform: capitalize; margin:0 0 0 0; }
     .signupnewletter-header p{ font-size:18px; color: #FFFFFFD6; margin:0 0 1.666vw 0; font-weight:300;}

@@ -59,10 +59,10 @@
             {% if newss  %}
             {% for news in newss %}
             <li>
-               <a href="{{news.view}}"><img src="{{news.thumb}}" alt="{{news.name}}"/></a>
+               <a href="{{news.href}}"><img src="{{news.thumb}}" alt="{{news.name}}"/></a>
                <div class="blog_inner_c">
                   <div class="bl_cont">
-                     <h4><a href="{{news.view}}">{{news.name}}</a></h4>
+                     <h4><a href="{{news.href}}">{{news.name}}</a></h4>
                      <p>{{news.description}}</p>
                   </div>
                </div>
@@ -80,7 +80,7 @@
    jQuery(document).ready(function() {
       jQuery("#owl-example").owlCarousel({
          responsive: true,
-         items:4
+         items:5
    
       });    
    });

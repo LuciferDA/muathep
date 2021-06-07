@@ -1059,7 +1059,7 @@ box-shadow:         inset 0px 0px 10px 0px rgba(233, 233, 233, 0.61); padding:0 
 .blog_main_con .author_img img{ width:100%; margin-bottom:0px; height:100%;}
 #add_product{
     color: #fff;
-    background: #31c0ea;
+    background: #0f3190;
     padding: 16px;
     border-radius: 30px;
     margin: 16px;
@@ -1168,5 +1168,33 @@ div#data {
     font-size: 20px;
     margin: 16px 0px;
 }
+.hot_news{
+    background-color: rgb(3, 160, 66);
+    width:100%;
+    padding: 10px 0px;
+}
+.hot_news a{color:#fff; font-size: 16px; margin:0px 0px 0px 70px;padding: 8px 0px;}
+.hot_news .hot_news_title{
+    width: 15%;
+    float: left;
+    color: #fff;
+    padding: 0px 8px;
+    font-size: 17px;
+}
+.hot_news .hot_news_title i{padding:3px 0px;}
+.hot_news marquee{
+    width: 85%;
+}
+.box-news-detail{font-size:15px;}
+#information-information h1{
+    font-size: 25px;
+    color: #0f3190;
+    padding: 16px 0px;
+}
+#content_news{padding:20px 0px;}
+
+
+
+
 
 
