@@ -162,6 +162,9 @@ class ControllerAccountOrder extends Controller {
 			}
 
 			$data['order_id'] = $this->request->get['order_id'];
+			$data['firstname'] = $order_info['firstname'];
+			$data['email'] = $order_info['email'];
+			$data['phone'] = $order_info['telephone'];
 			$data['date_added'] = date($this->language->get('date_format_short'), strtotime($order_info['date_added']));
 
 			if ($order_info['payment_address_format']) {
