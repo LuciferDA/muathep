@@ -135,6 +135,53 @@ class ControllerCommonHeader extends Controller {
 			);
 		}
 
+		$this->load->model('news/news');
+
+		$data['newss'] = array();
+
+		$filter_data = array(
+			'sort'  => 'n.date_added',
+			'order' => 'DESC',
+			'start' => 0,
+			'limit' => 10,
+			'filter_category_id' => 13
+
+		);
+
+		$results = $this->model_news_news->getNewss($filter_data);
+		if ($results) {
+			foreach ($results as $result) {
+
+				$data['newss'][] = array(
+					'news_id'  => $result['news_id'],
+					'name'        => $result['name'],
+					'href'        => $this->url->link('news/news', 'news_id=' . $result['news_id'])
+				);
+			}
+		}
+
+		$data['price_news'] = array();
+
+		$filter_data = array(
+			'sort'  => 'n.date_added',
+			'order' => 'DESC',
+			'start' => 0,
+			'limit' => 10,
+			'filter_category_id' => 14
+
+		);
+
+		$results = $this->model_news_news->getNewss($filter_data);
+		if ($results) {
+			foreach ($results as $result) {
+
+				$data['price_news'][] = array(
+					'news_id'  => $result['news_id'],
+					'name'        => $result['name']
+				);
+			}
+		}
+
 		$data['items'] = $this->cart->countProducts();
 		
 		$data['home'] = $this->url->link('common/home');

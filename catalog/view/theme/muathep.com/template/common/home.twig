@@ -1,55 +1,5 @@
 {{header}}
 {{content_top}}
-<div id="bodycon">
-   <div class="container  home_max ">
-      <div class="main-container col1-layout">
-         <div class="" id="">
-            <div class="main">
-               <!-- <div class="breadcrumbs">
-                  <ul>
-                    <li class="home"> <a href="" title="Go to Home Page">Home</a> <span> &gt; </span> </li>
-                    <li> <strong>Define</strong> </li>
-                  </ul>
-                  </div> -->
-               <div class="col-main ">
-                  <div class="std">
-                     <p>
-                     <div class="contentBox construction-cat-home">
-                        <h3><span>Sản Phẩm</span></h3>
-                        <p>Muathep.vn  - Đơn vị phân phối cấp một của các nhà máy thép có quy mô hàng đầu tại Việt Nam cũng như khu vực</p>
-                        <div class="category_section">
-                           <ul>
-                              {% for category in categories %}
-                              <li class="slide">
-                                 <a href="{{category.href}}" title="{{category.name}}">
-                                    <img src="{{category.image}}" alt="{{category.name}}" />
-
-                                 </a>
-                                 <h6><a href="{{category.href}}">{{category.name}}</a></h6>
-                                 <h5><span>
-                                    {% if category.children %}
-                                       {% for child in category.children %}
-                                          <a href="{{child.href}}">{{child.name}}</a>
-                                       {% endfor %}
-                                    {% endif %}
-                                    </span>
-                                 </h5>
-                              </li>
-
-                              {% endfor %}
-                           </ul>
-                        </div>
-                     </div>
-                     <!-- 14-10-2020 scripts -->
-                     <!-- tabs scripts -->
-                     </p>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
 <div class="our-brand">
    <div class="container">
       <div class="brandslist">

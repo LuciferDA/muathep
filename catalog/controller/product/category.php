@@ -141,8 +141,37 @@ class ControllerProductCategory extends Controller {
 					'filter_sub_category' => true
 				);
 
+				$children_data = array();
+
+				$children = $this->model_catalog_category->getCategories($result['category_id']);
+
+				foreach ($children as $child) {
+					$filter_data = array(
+						'filter_category_id'  => $child['category_id'],
+						'filter_sub_category' => true
+					);
+					$children2_data=array();
+                    $children2 = $this->model_catalog_category->getCategories($child['category_id']);
+
+                    foreach ($children2 as $child2) {
+    					$children2_data[] = array(
+                            'category_id' => $child2['category_id'],
+    						'name'  => $child2['name'],
+    						'href'  => $this->url->link('product/category', 'path=' . $child2['category_id']),
+    					);
+                        
+                    }
+
+					$children_data[] = array(
+						'name'  => $child['name'],
+						'href'  => $this->url->link('product/category', 'path=' . $result['category_id'] . '_' . $child['category_id']),
+						'child' => $children2_data
+					);
+				}
+
 				$data['categories'][] = array(
 					'name' => $result['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+					'children' => $children_data,
 					'href' => $this->url->link('product/category', 'path='. $result['category_id'] . $url),
 					'thumb' => $this->model_tool_image->resize($result['image'] , $this->config->get('theme_' . $this->config->get('config_theme') . '_image_category_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_category_height'))
 				);

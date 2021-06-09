@@ -61,6 +61,7 @@
                   <!--Bingo Serach start-->
                   <meta name="msvalidate.01" content="9242569C9DE3BD3EE686333E8853CA5C" />
                   <!--Bingo Serach end-->
+                  <link rel="stylesheet" type="text/css" href="catalog/view/theme/muathep.com/css/magebuzz/catsidebarnav/click.css" media="all" />
                   <link rel="stylesheet" type="text/css" href="catalog/view/theme/muathep.com/css/main_styles.css" media="all" />
                   <link rel="stylesheet" type="text/css" href="catalog/view/theme/muathep.com/css/site.css" media="all" />
                   <link rel="stylesheet" type="text/css" href="catalog/view/theme/muathep.com/css/website.css" media="all" />
@@ -69,7 +70,6 @@
                   <link rel="stylesheet" type="text/css" href="catalog/view/theme/muathep.com/css/style.css" media="all" />
                   <link rel="stylesheet" type="text/css" href="catalog/view/theme/muathep.com/css/marketplace_mobile.css" media="all" />
                   <link rel="stylesheet" type="text/css" href="catalog/view/theme/muathep.com/css/custom_popup.css" media="all" />
-                  <link rel="stylesheet" type="text/css" href="catalog/view/theme/muathep.com/css/magebuzz/catsidebarnav/click.css" media="all" />
                   <script type="text/javascript" src="catalog/view/theme/muathep.com/js/prototype/prototype.js"></script>
                   <script type="text/javascript" src="catalog/view/theme/muathep.com/js/lib/jquery/jquery-1.10.2.min.js"></script>
                   <script type="text/javascript" src="catalog/view/theme/muathep.com/js/lib/jquery/noconflict.js"></script>
@@ -146,14 +146,26 @@
                                  <marquee direction="left">
                                     <p>
                                        <ul class="pricesteeltoday">
-                                          <li>Giá phôi thép Đường Sơn giao ngay sáng 19/5: -25 USD/tấn</li>
-                                          <li>Thép cuộn Việt Ý 19/5: +300đ/kg</li>
-                                          <li>Phế liệu nội địa Nhật Bản ngày 19/5: + 9-14 USD/tấn</li>
+                                          {% if price_news  %}
+                                          {% for news in price_news %}
+                                             <li>{{news.name}}</li>
+                                          {% endfor %}
+                                          {% endif %}
                                        </ul>
                                     </p>
                                  </marquee>
                               </div>
                            </div>
+                        </div>
+                        <div class="hot_news">
+                           <div class="hot_news_title"><i class="fas fa-newspaper"></i> Tin hot ngành thép: </div>
+                           <marquee direction="left" onmouseover="stop()" onmouseout="start()">
+                              {% if newss  %}
+                              {% for news in newss %}
+                                 <a href="{{news.href}}">{{news.name}}</a>
+                              {% endfor %}
+                              {% endif %}
+                           </marquee>
                         </div>
                         <div class="mobile_phone">
                            <p>Hỗ trợ 24/7 : <span>{{telephone}}</span></p>
@@ -231,7 +243,7 @@
                                  <div class="hright">
                                     <div class="header_net">
                                        <div class="search-header">
-                                          <input type="text" name="" placeholder="Nhập nội dung tìm kiếm..." />
+                                          {{ search }}
                                        </div>
                                        <div class="web-top-nav">
                                           <ul class="signin-register ">
@@ -293,13 +305,6 @@
                                                       </li>
                                                       <li>
                                                          <input type="password" placeholder="Confirm Password" />
-                                                      </li>
-                                                      <li>
-                                                         <select>
-                                                            <option value="">Individual</option>
-                                                            <option value="">Company</option>
-                                                            <option value="">supplier</option>
-                                                         </select>
                                                       </li>
                                                       <li><input type="submit" value="REGISTER" /></li>
                                                    </ul>
@@ -395,15 +400,6 @@
                                        </ul>
                                     </div>
                                  </nav>
-                              </div>
-                              <div class="hot_news">
-                                 <div class="hot_news_title"><i class="fas fa-newspaper"></i> Tin hot ngành thép: </div>
-                                 <marquee direction="left" onmouseover="stop()" onmouseout="start()">
-                                    <a href="#">Diễn biến thị trường phôi thép nội địa tuần 22/2021 (31/5-4/6): Giao dịch trầm lắng dù giá giảm</a>
-                                    <a href="#">Giá phôi thép ngày 4/6: Miền Bắc giảm nhẹ</a>
-                                    <a href="#">Diễn biến thị trường thép xây dựng tuần 22/2021 (31/5-4/6): Đi ngang cả tuần để chờ bước ngoặt</a>
-                                    <a href="#">Diễn biến thị trường thép xây dựng tuần 22/2021 (31/5-4/6): Đi ngang cả tuần để chờ bước ngoặt</a>
-                                 </marquee>
                               </div>
                            </header>
                         </div>

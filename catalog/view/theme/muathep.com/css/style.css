@@ -1192,8 +1192,20 @@ div#data {
     padding: 16px 0px;
 }
 #content_news{padding:20px 0px;}
-
-
+#category-sidebar-nav li ul li ul{display:block;}
+ul#category-sidebar-nav>li.level0>ul.level0>li.level1>ul{background-color:#eff8fb;}
+ul#category-sidebar-nav>li.level0>ul.level0>li.level1>ul li{padding:0px 20px;}
+.contentBox.contentWithSidebar .content-left #catalog-filters .block-content #category-sidebar-nav ul.level1 li > a:hover{
+    background:none;
+    color:#d72320;
+}
+button#button-search {
+    position: relative;
+    top: 10px;
+    left: -30px;
+    background: none;
+    font-size: 18px;
+}
 
 
 
