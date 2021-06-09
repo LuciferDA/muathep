@@ -1130,13 +1130,14 @@ div#data {
   visibility: hidden;
 }
 .custom-file-input::before {
-  content: "\f0c6  Tải lên file khối lượng";
+  width:150px;
+  content: "\f0c6  Tải lên file";
   color: black;
   display: inline-block;
   background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
   border: 1px solid #999;
-  border-radius: 20px;
-  padding: 15px 8px;
+  border-radius: 30px;
+  padding: 15px 0px;
   outline: none;
   white-space: nowrap;
   -webkit-user-select: none;
@@ -1145,6 +1146,7 @@ div#data {
   font-size: 10pt;
   margin: 16px;
   font-family: 'Poppins',sans-serif,"Font Awesome 5 Free";
+  text-align: center;
 }
 
 .custom-file-input::after {
@@ -1206,7 +1208,34 @@ button#button-search {
     background: none;
     font-size: 18px;
 }
-
-
+.phone{
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    background-color: #0f318f;
+    color: #fff;
+    z-index: 9999;
+    padding: 8px;
+    font-size: 20px;
+    border-radius: 30px;
+    
+}
+.phone a{
+    color:#fff;
+}
+.phone i{
+    padding: 8px;
+    border-radius: 50%;
+    background: #d51414;
+}
+.phone span{
+    position: relative;
+    top: 5px;
+}
+.note_quote{
+    font-size: 14px;
+    background: #d8ffe8;
+    padding: 16px;
+}
 
 
