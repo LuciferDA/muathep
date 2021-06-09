@@ -9,6 +9,7 @@ class ControllerExtensionModuleSlideshow extends Controller {
 
 		$data['news'] = $this->url->link('news/news');
 		$data['quote'] = $this->url->link('checkout/order');
+		$data['tracking_order'] = $this->url->link('account/order/info');
 		$data['banners'] = array();
 
 		$results = $this->model_design_banner->getBanner($setting['banner_id']);

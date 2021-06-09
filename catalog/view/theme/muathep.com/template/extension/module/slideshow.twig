@@ -45,7 +45,9 @@
                                              <p>{{banner.link}}</p>
                                              <h6>
                                                 <a href="{{quote}}">Lấy báo giá</a>
-                                                <a href='{{news}}' class="btn_view_news">Xem tin tức</a></h6>
+                                                <a href='{{news}}' class="btn_view_news">Xem tin tức</a>
+                                                <a href='#' id="tracking_order" id="btn_view_order" class="btn_view_order">Kiểm tra đơn hàng</a>
+                                              </h6>
                                           </div>
                                        </li>
                                        {% endfor %}
@@ -102,3 +104,37 @@
                            </script>
                         </div>
                      </div>
+  <div id="tracking_modal" class="modal">
+     <!-- Modal content -->
+     <div class="modal-content">
+        <span class="close_modal" id="close_modal_tracking"></span>
+        <div class="model_form">
+           <h3>Kiểm tra đơn hàng</h3>
+           <ul class="signin_form">
+              <form action="{{tracking_order}}" method="GET">
+              <li>
+                 <input type="text" name="order_id" placeholder="Nhập mã đơn hàng " />
+              </li>
+              <li><input type="submit" value="Kiểm tra" /></li>
+              </form>
+           </ul>
+        </div>
+     </div>
+  </div>
+<script>           
+     var tracking_modal = document.getElementById('tracking_modal'); 
+     var btn_view_order = document.getElementById('tracking_order');
+
+     var close_tracking = document.getElementById('close_modal_tracking');
+        
+  // when user clicks the button open the model
+     btn_view_order.onclick =  function(){
+        tracking_modal.style.display = "block";
+     };
+
+     close_tracking.onclick = function(){
+        tracking_modal.style.display = "none";
+     };
+                     
+         
+</script>
