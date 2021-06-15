@@ -42,13 +42,19 @@ class ControllerProductManufacturer extends Controller {
 				$description = '';
 			}
 
+			if(!empty($result['url'])){
+				$url = $result['url'];
+			}else{
+				$url = '';
+			}
+
 			$image = $this->model_tool_image->resize($result['image'], 300, 250);
 
 			$data['categories'][$key]['manufacturer'][] = array(
 				'name' => $result['name'],
 				'id'   => $result['manufacturer_id'],
 				'description'   => $description,
-				'url'   => $result['url'],
+				'url'   => $url,
 				'href' => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $result['manufacturer_id']),
 				'image'	=> $image
 
