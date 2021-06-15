@@ -59,6 +59,7 @@
 
                   <!-- End Facebook Pixel Code -->
                   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+                  <link rel="stylesheet" type="text/css" href="catalog/view/theme/muathep.com/css/mmenu/mmenu.css" media="all" />
                   <link rel="stylesheet" type="text/css" href="catalog/view/theme/muathep.com/css/magebuzz/catsidebarnav/click.css" media="all" />
                   <link rel="stylesheet" type="text/css" href="catalog/view/theme/muathep.com/css/main_styles.css" media="all" />
                   <link rel="stylesheet" type="text/css" href="catalog/view/theme/muathep.com/css/website.css" media="all" />
@@ -116,21 +117,55 @@
                      <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i" rel="stylesheet">
                      <link rel="stylesheet" href="catalog/view/theme/muathep.com/css/slimmenu.min.css">
                      <link rel="stylesheet" href="catalog/view/theme/muathep.com/css/flexslider.css">
+
+                    <nav id="menu">
+                        <ul>
+                           {% if categories %}
+                              {% for category in categories %}
+                                 <li>
+                                    <a href="{{category.href}}">{{category.name}}</a>
+                                    {% if category.children %}
+                                    <ul class="sub_menu">
+                                       {% for child in category.children %}
+                                       <li><a href="{{child.href}}">{{child.name}}</a></li>
+                                       {% endfor %}
+                                      
+                                    </ul>
+                                 {% endif %}
+                                 </li>
+                              {% endfor %}
+                           {% endif %}
+
+                           <li>
+                              <a href="{{manufacturer}}">Nhà sản xuất</a>
+                           </li>
+                           <li><a href="#">Tin tức ngành thép </a></li>
+                        </ul>
+                    </nav>
+                <script>
+                    new Mmenu(document.querySelector('#menu'));
+                </script>
                      <div id="navbar">
                         <div class="header_top">
-                           <div class="container">
+                           <div class="pricesteel">
                               <div class="header_top_content">
-                                 <marquee direction="left">
-                                    <p>
-                                       <ul class="pricesteeltoday">
-                                          {% if price_news  %}
-                                          {% for news in price_news %}
-                                             <li>{{news.name}}</li>
-                                          {% endfor %}
-                                          {% endif %}
-                                       </ul>
-                                    </p>
-                                 </marquee>
+                                 <div class="icon">
+                                    <i class="fa fa-line-chart" aria-hidden="true"></i>
+                                    <span class="d-none d-sm-block">Giá thép hằng ngày: </span>
+                                 </div>
+                                 <div class="content_marquee">
+                                    <marquee direction="left">
+                                       <p>
+                                          <ul class="pricesteeltoday">
+                                             {% if price_news  %}
+                                             {% for news in price_news %}
+                                                <li>{{news.name}}</li>
+                                             {% endfor %}
+                                             {% endif %}
+                                          </ul>
+                                       </p>
+                                    </marquee>
+                                 </div>
                               </div>
                            </div>
                         </div>
@@ -147,6 +182,10 @@
                         <div class="phone">
                            <a href="tel:{{telephone}}"><i class="fas fa-phone"></i> <span>{{telephone}}</span></a>
                         </div>
+                       <div class="mmenu-mobile">
+                           <a href="#menu"><span><i class="fa fa-bars" aria-hidden="true"></i></span></a>
+                           <a href="#" id="signin_form1" class="signin_mobile" ><span class="mlc"><i class="fa fa-user" aria-hidden="true"></i> Tài khoản</span></a>
+                       </div>
                         <div class="header_section ">
                            <header id="header">
                               <div class="container">

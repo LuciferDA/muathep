@@ -1251,3 +1251,42 @@ button#button-search {
 }
 .manufacturer h4{font-size: 22px; padding-bottom: 16px;}
 .manufacturer a{ padding: 16px 0px; width:100%; float: left;}
+.mmenu-mobile{
+    width: 100%;
+    background: #0f3190;
+    padding: 16px;
+}
+.mmenu-mobile i{
+    font-size: 26px;
+    color: #fff;
+}
+.header_top_content .icon{width: 15%;
+    float: left;}
+.header_top_content .content_marquee{
+    float: left;
+    width: 85%;
+}
+.header_top_content .icon i{
+    font-size: 20px;
+    padding: 5px 0px;
+    float: left;
+}
+.header_top_content .icon span{float:left;padding:5px; font-size: 15px;}
+.pricesteel{padding:0px 9px;}
+.mmenu-mobile{display:none;}
+@media only screen and (max-width: 480px) { 
+    .mmenu-mobile{display:block;}
+}
+.signin_mobile {float: right;
+    color: #fff;
+    padding: 2px;
+    font-size: 17px;
+}
+.signin_mobile i{
+    font-size: 17px;
+    padding: 3px;
+}
+
+
+
+
