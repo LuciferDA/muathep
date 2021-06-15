@@ -206,6 +206,7 @@ class ControllerCommonHeader extends Controller {
 		$data['project'] = $this->url->link('news/category', 'path_news=13');
 		$data['article'] = $this->url->link('information/optimblog');
 		$data['quote'] = $this->url->link('checkout/order');
+		$data['manufacturer'] = $this->url->link('product/manufacturer');
 		$data['language'] = $this->load->controller('common/language');
 		$data['currency'] = $this->load->controller('common/currency');
 		$data['search'] = $this->load->controller('common/search');

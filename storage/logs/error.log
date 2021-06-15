@@ -1,1 +1,4 @@
 2021-05-31 9:30:09 - PHP Warning:  unlink(/Applications/Ampps/www/muathep/storage//cache/cache.length_class.2.1622453338): No such file or directory in /Applications/Ampps/www/muathep/system/library/cache/file.php on line 17
+2021-06-11 1:10:56 - PHP Warning:  mysqli::mysqli(): (HY000/2002): Connection refused in /Applications/Ampps/www/muathep/system/library/db/mysqli.php on line 7
+2021-06-11 1:10:56 - PHP Warning:  DB\MySQLi::__construct(): Couldn't fetch mysqli in /Applications/Ampps/www/muathep/system/library/db/mysqli.php on line 10
+2021-06-11 1:10:56 - PHP Warning:  DB\MySQLi::__construct(): Couldn't fetch mysqli in /Applications/Ampps/www/muathep/system/library/db/mysqli.php on line 10

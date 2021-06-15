@@ -1590,7 +1590,19 @@ span.pro_pricing{ display: inline-block; text-align: right; width:100%; max-widt
 #myBtn{bottom:50px}
 .search-button{width:50px}
 .toll-free{margin-left:0}
-.header_section{display:none}
+.search-header{width:100%;}
+.search-header input {
+    width: 100%;    
+    background: #f5fcff;
+}
+button#button-search{
+    position: relative;
+    top: -28px;
+    right: 10px;
+    background: none;
+    font-size: 18px;
+    float: right;
+}
 .hsocial_icons{display:none}
 .header_top_content marquee p{font-size:14px}
 .header_top .get_quote{display:none}
@@ -1773,7 +1785,7 @@ select::placeholder,input::placeholder{ font-size:12px !important;}
 .web-top-nav ul li a{font-size:13px;background:none!important;padding:0 0 0 35px !important}
 .hright{padding:18px 0 20px}
 .web-top-nav ul li{margin:0 10px 0 0}
-.web-top-nav{margin:0 0 15px;display:block}
+.web-top-nav{margin:0 0 15px;display:none}
 .header_cart .header-minicart span{margin-top:-7px;font-size:14px;font-weight:500}
 .header_cart .header-minicart em{font-size:14px}
 

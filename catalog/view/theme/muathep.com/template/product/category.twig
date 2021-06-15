@@ -50,16 +50,17 @@
                                     <div class="main">
                                        <div id="ptech_multilayer_container">
                                           <p style="    margin: 22px 0px;
-    font-size: 15px;">* Giá chỉ mang tính chất tham khảo, vui lòng liên hệ với chúng tôi để nhận giá chính xác nhất</p>
+    font-size: 15px;">* Giá chỉ mang tính chất tham khảo, vui lòng nhập thông tin chi tiết <a href="{{quote}}">(click vào đây)</a> để chúng tôi báo giá chính xác nhất</p>
                                           <div class="category-products">
                                                 <div id="list-view">
                                                    <div class="list_products" style="margin-top: 40px;">
                                                       <table>
                                                          <tr>
                                                             <th>Sản phẩm</th>
+                                                            <th>Số lượng</th>
+                                                            <th>Khối lượng</th>
                                                             <th>Đơn giá</th>
-                                                            <th>Trọng lượng</th>
-                                                            <th>Độ dài</th>
+                                                            <th>Tổng tiền</th>
                                                          </tr>
                                                          <tbody>
                                                             {% for product in products %}
@@ -71,9 +72,6 @@
                                                                         <td>
                                                                            <h6> <a title="{{product.name}}">{{product.name}}</a></h6>
                                                                         </td>
-                                                                        <td>
-                                                                           <div class="actions list_page" style="bottom: 135px;"><span class="button btn-cart"><code><kbd>Giá Từ <strong>{{product.price}} / {{product.weight}}</strong></kbd></code></span></div>
-                                                                        </td>
                                                                         <div class="ton-piece" id="list-price-L">
                                                                            <td>
                                                                               <p><input type="number" step="any"  name="weight[]"  class="weight weight_{{product.product_id}}"  data-prod="{{product.product_id}}" autocomplete="off"  placeholder="{{product.weight}}" /></p>
@@ -82,6 +80,10 @@
                                                                            <td>
                                                                               <p><input type="number" step="any"  name="length[]" pattern="0-9" class="length length_{{product.product_id}}" data-prod="{{product.product_id}}" autocomplete="off" placeholder="{{product.length}}" /></p>
                                                                            </td>
+                                                                           <td>
+                                                                              <div class="actions list_page" style="bottom: 135px;"><span class="button btn-cart"><code><kbd>Giá Từ <strong>{{product.price}} / {{product.weight}}</strong></kbd></code></span></div>
+                                                                           </td>
+                                                                           <td>N/A</td>
                                                                         </div>
                                                                      </div>
                                                                   </div>

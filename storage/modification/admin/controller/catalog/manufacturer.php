@@ -307,6 +307,22 @@ $data['lang'] = $this->language->get('code');
 
 		$data['user_token'] = $this->session->data['user_token'];
 
+		if (isset($this->request->post['url'])) {
+			$data['url'] = $this->request->post['url'];
+		} elseif (!empty($manufacturer_info)) {
+			$data['url'] = $manufacturer_info['url'];
+		} else {
+			$data['url'] = '';
+		}
+
+		if (isset($this->request->post['description'])) {
+			$data['description'] = $this->request->post['description'];
+		} elseif (!empty($manufacturer_info)) {
+			$data['description'] = $manufacturer_info['description'];
+		} else {
+			$data['description'] = '';
+		}
+
 		if (isset($this->request->post['name'])) {
 			$data['name'] = $this->request->post['name'];
 		} elseif (!empty($manufacturer_info)) {
