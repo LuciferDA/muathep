@@ -36,12 +36,18 @@ class ControllerProductManufacturer extends Controller {
 				$data['categories'][$key]['name'] = $key;
 			}
 
+			if(!empty($result['description'])){
+				$description = html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8');
+			}else{
+				$description = '';
+			}
+
 			$image = $this->model_tool_image->resize($result['image'], 300, 250);
 
 			$data['categories'][$key]['manufacturer'][] = array(
 				'name' => $result['name'],
 				'id'   => $result['manufacturer_id'],
-				'description'   => html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'),
+				'description'   => $description,
 				'url'   => $result['url'],
 				'href' => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $result['manufacturer_id']),
 				'image'	=> $image
