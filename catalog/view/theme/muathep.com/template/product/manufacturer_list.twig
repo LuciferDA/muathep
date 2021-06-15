@@ -12,9 +12,10 @@
   </div>
 
   <div id="product-manufacturer" class="container">
+    <div class="row">
     {% for category in categories %}
       {% if category.manufacturer %}
-      <div class="row">
+      
       {% for manufacturers in category.manufacturer|batch(4) %}
        {% for manufacturer in manufacturers %}
         <div class="col-sm-3">
@@ -46,9 +47,10 @@
         {% endfor %} 
       
       {% endfor %}
-      </div>
+      
       {% endif %}
     {% endfor %}
+    </div>
   </div>
 </div>
 {{ footer }}
