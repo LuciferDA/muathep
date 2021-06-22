@@ -42,6 +42,8 @@ class ControllerMailOrder extends Controller {
 	}
 		
 	public function add($order_info, $order_status_id, $comment, $notify) {
+		print_r($order_info);
+		exit;
 		// Check for any downloadable products
 		$download_status = false;
 

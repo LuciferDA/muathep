@@ -1129,11 +1129,11 @@ div#data {
 }
 .custom-file-input::before {
   width:150px;
-  content: "\f0c6  Tải lên file";
-  color: black;
+  content: "1. Tải lên file";
+  color: #fff;
   display: inline-block;
-  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
-  border: 1px solid #999;
+  background: #d51414;
+  border: 1px solid #d51414;
   border-radius: 30px;
   padding: 15px 0px;
   outline: none;
@@ -1147,9 +1147,6 @@ div#data {
   text-align: center;
 }
 
-.custom-file-input::after {
-  content: "Tải lên file khối lượng";
-}
 .custom-file-input:hover::before {
   border-color: black;
 }
@@ -1159,7 +1156,7 @@ div#data {
 .custom-file-input:active::before {
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
 }
-.add_file{float:left;}
+.add_file{float:left; width:185px;}
 #alertMessages{
     width: 100%;
     float: left;
@@ -1247,7 +1244,7 @@ button#button-search {
     margin-bottom: 25px;
     width: 100%;
     float: left;
-    padding-bottom: 32px;
+    padding: 20px;
 }
 .manufacturer h4{font-size: 22px; padding-bottom: 16px;}
 .manufacturer a{ padding: 16px 0px; width:100%; float: left;}
@@ -1285,6 +1282,17 @@ button#button-search {
 .signin_mobile i{
     font-size: 17px;
     padding: 3px;
+}
+#chatme{
+    color: #fff;
+    background: #0043ff;
+    padding: 16px;
+    border-radius: 30px;
+    margin: 16px;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    float: left;
 }
 
 

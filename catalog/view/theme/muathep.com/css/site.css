@@ -140,7 +140,7 @@ button{border:none;outline:none}
 }
 .menu-trigger{display:none}
 
-.nav{position:relative;margin-top:0;font-size:0;float:left; width:100%;}
+.nav{position:relative;margin-top:0;float:left; width:100%;}
 .mobile_nav{display:none}
 .nav li{border-left:1px solid #215d83;float:left;position:relative}
 .nav li:last-child{border-right:1px solid #215d83;}

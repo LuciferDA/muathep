@@ -13,43 +13,39 @@
 
   <div id="product-manufacturer" class="container">
     <div class="row">
-    {% for category in categories %}
-      {% if category.manufacturer %}
-      
-      {% for manufacturers in category.manufacturer|batch(4) %}
-       {% for manufacturer in manufacturers %}
-        <div class="col-sm-3">
-          <div class="manufacturer">
-          <img src="{{manufacturer.image}}"/>
-            <h4>{{ manufacturer.name }}</h4>
-            <a class="p-2" href="{{ manufacturer.url }}" target="_blank">{{ manufacturer.url }}</a><br/>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal{{manufacturer.id}}">
-              Xem chi tiết
-            </button>
-          </div>
-          <div class="modal fade" id="Modal{{manufacturer.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">{{manufacturer.name}}</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  {{manufacturer.description}}
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                </div>
-              </div>
+    <div class="col-md-3">
+      <div id="list-example" class="list-group">
+          {% for category in categories %}
+            {% if category.manufacturer %}
+                {% for manufacturers in category.manufacturer|batch(4) %}
+                {% for manufacturer in manufacturers %}
+                    <a class="nav-link" href="#item-1">{{ manufacturer.name }}</a>
+                {% endfor %}
+                {% endfor %}
+            {% endif %}
+          {% endfor %}
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
+      {% for category in categories %}
+        {% if category.manufacturer %}
+        
+        {% for manufacturers in category.manufacturer|batch(4) %}
+         {% for manufacturer in manufacturers %}
+            <div class="manufacturer">
+              <h4 id="item-1"><a class="p-2" href="{{ manufacturer.url }}" target="_blank">{{ manufacturer.name }}</a></h4>
+              <br/>
+              {{manufacturer.description}}
             </div>
-          </div>
-        </div>
-        {% endfor %} 
-      
+          {% endfor %} 
+        
+        {% endfor %}
+        
+        {% endif %}
       {% endfor %}
-      
-      {% endif %}
-    {% endfor %}
+      </div>
+    </div>
     </div>
   </div>
 </div>

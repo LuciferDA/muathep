@@ -5,7 +5,6 @@
                           });
                         });
                      </script>
-                     
 
                      <div id="singupNewsletter">
                         <div class="container">  </div>
@@ -14,111 +13,55 @@
                         <div class="container">
                            <div class="signupnewsletter">
                               <div class="signupnewletter-header">
-                                 <h3>Subscribe for Newsletter</h3>
-                                 <p>Learn about the latest trends in steel marketplace. We keep you informed about everything you should know.</p>
+                                 <h3>Đăng ký nhận bản tin</h3>
+                                 <p>Tìm hiểu về các thông tin mới nhất trên thị trường thép. Muathep.com sẽ thông báo cho bạn các thông tin mới nhất về ngành thép.</p>
                               </div>
                               <div class="signupnewletter-form">
                                  <!-- <input type="email" placeholder="Email">
                                     <button type="button">Subscribe</button>-->
                                  <div class="block block-subscribe">
-                                    <form action="javascript:void(0)" method="post" id="newsletter-validate-detail" onsubmit="myfunc();">
-                                       <div class="block-content">
-                                          <div class="input-box">
-                                             <input type="text" name="email" id="newsletter" placeholder="Email Address" title="Sign up for our newsletter" class="input-text required-entry validate-email" autocomplete="off" />
-                                             <div class="error-news-msg" id="error-news-msg" style="display:none;">Please Enter a valid email address.</div>
-                                             <div class="output" id="output"></div>
-                                          </div>
-                                          <div class="actions">
-                                             <button type="submit" title="Subscribe" class="button">Subscribe</button>  
-                                             <!--<input type="submit" value=" " class="submit">-->
-                                          </div>
-                                       </div>
+                                    <!-- Begin Mailchimp Signup Form -->
+                                    <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+                                    <style type="text/css">
+                                      .mc-field-group input{background:#fff;}
+                                      #mc_embed_signup .mc-field-group label{color: #fff; font-size:15px;}
+                                      #mc_embed_signup .indicates-required{color:#fff;}
+                                      #mc_embed_signup #mce-success-response {
+                                          color: #ffffff;
+                                          display: none;
+                                          width: 100%;
+                                          text-align: center;
+                                          /* background: white; */
+                                          font-size: 20px;
+                                          padding: 12px;
+                                          margin: 0px 0px 10px 0px;
+                                      }
+                                      /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+                                         We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+                                    </style>
+                                    <div id="mc_embed_signup">
+                                    <form action="https://muathep.us6.list-manage.com/subscribe/post?u=88dcc8f8ae2d9e526675b1aa8&amp;id=0d7741ca70" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                        <div id="mc_embed_signup_scroll">
+                                    <div class="indicates-required"><span class="asterisk">*</span> trường bắt buộc</div>
+                                    <div class="mc-field-group">
+                                      <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+                                    </label>
+                                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                                    </div>
+                                      <div id="mce-responses" class="clear">
+                                        <div class="response" id="mce-error-response" style="display:none"></div>
+                                        <div class="response" id="mce-success-response" style="display:none"></div>
+                                      </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_88dcc8f8ae2d9e526675b1aa8_0d7741ca70" tabindex="-1" value=""></div>
+                                        <div class="clear text-center"><input style="
+                                          background: #031750;
+    text-align: center;
+    font-size: 20px;" type="submit" value="Đăng ký" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                                        </div>
                                     </form>
-                                    <script type="text/javascript">
-                                       function myfunc()
-                                       {  
-                                          var newsletterSubscriberFormDetail = new VarienForm('newsletter-form');
-                                          var form_email = $('newsletter').getValue();
-                                          var params_form = $('newsletter-validate-detail');       
-                                          new Validation('newsletter');                        
-                                          if(echeck(form_email))                            
-                                          {  
-                                             new Ajax.Request( "index.html", {
-                                             method: "post",
-                                             parameters: {
-                                                email : form_email
-                                             },
-                                             onSuccess: function( transport ) {              
-                                                Element.hide('error-news-msg');           
-                                                var da = transport.responseText;
-                                                var dat = da.split("&&");              
-                                                $('output').innerHTML = dat[0];
-                                                if(dat[1]==1){
-                                                   Element.show('output'); 
-                                                    $('output').setAttribute("class", "success-msg");
-                                                   Element.hide.delay(10, 'output');
-                                                } else { 
-                                                    Element.show('output'); 
-                                                   $('output').setAttribute("class", "error-msg"); 
-                                                   Element.hide.delay(10, 'output');
-                                                }
-                                             }
-                                          });            
-                                             
-                                          } else {  return true;}
-                                       }
-                                       
-                                         function echeck(str) {
-                                             var at="@"
-                                             var dot="."
-                                             var lat=str.indexOf(at)
-                                             var lstr=str.length
-                                             var ldot=str.indexOf(dot)
-                                             if (str.indexOf(at)==-1){
-                                               goProcedural();
-                                                return false;
-                                             }
-                                       
-                                             if (str.indexOf(at)==-1 || str.indexOf(at)==0 || str.indexOf(at)==lstr){
-                                              goProcedural();
-                                                return false;
-                                             }
-                                       
-                                             if (str.indexOf(dot)==-1 || str.indexOf(dot)==0 || str.indexOf(dot)==lstr){
-                                                 goProcedural();
-                                                 return false;
-                                             }
-                                       
-                                              if (str.indexOf(at,(lat+1))!=-1){
-                                                goProcedural();
-                                                 return false;
-                                              }
-                                       
-                                              if (str.substring(lat-1,lat)==dot || str.substring(lat+1,lat+2)==dot){
-                                                 goProcedural();
-                                                 return false;
-                                              }
-                                       
-                                              if (str.indexOf(dot,(lat+2))==-1){
-                                                goProcedural();
-                                                 return false;
-                                              }
-                                             
-                                              if (str.indexOf(" ")!=-1){
-                                                 goProcedural();
-                                                 return false;
-                                              }
-                                               return true;                    
-                                         }
-                                         function goProcedural()
-                                       {
-                                        Element.hide('output');
-                                        $('error-news-msg').setAttribute("class", "validation-advice");
-                                           Element.show('error-news-msg');   
-                                           Element.hide.delay(10, 'error-news-msg');
-                                       }
-                                                                 
-                                    </script>
+                                    </div>
+                                    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+                                    <!--End mc_embed_signup-->
                                  </div>
                               </div>
                            </div>
