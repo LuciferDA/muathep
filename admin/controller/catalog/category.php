@@ -471,7 +471,7 @@ class ControllerCatalogCategory extends Controller {
 		}
 
 		if(!empty($category_info['file'])){
-			$data['file'] = 'http://'.$_SERVER['HTTP_HOST']'..'.$category_info['file'];
+			$data['file'] = 'http://'.$_SERVER['HTTP_HOST'].$category_info['file'];
 		}
 
 		$data['placeholder'] = $this->model_tool_image->resize('no_image.png', 100, 100);
