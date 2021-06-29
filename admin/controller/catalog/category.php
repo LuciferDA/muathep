@@ -20,12 +20,18 @@ class ControllerCatalogCategory extends Controller {
 		$this->load->model('catalog/category');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$target_dir    = "image/";
+			if(isset($_FILES['file'])){
 
-			$target_file   = $target_dir . basename($_FILES["fileupload"]["name"]);
+				$target_dir    = "/file/";
 
-			move_uploaded_file($_FILES["fileupload"]["tmp_name"], $target_file);
+				$target_file   = $target_dir . basename($_FILES["file"]["name"]);
 
+				if(move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)){
+
+					$this->model_catalog_category->editFile($this->request->get['category_id'], $target_file);
+				}
+			}
+			
 			$this->model_catalog_category->addCategory($this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -59,6 +65,17 @@ class ControllerCatalogCategory extends Controller {
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_catalog_category->editCategory($this->request->get['category_id'], $this->request->post);
+			if(isset($_FILES['file'])){
+
+				$target_dir    = "/file/";
+
+				$target_file   = $target_dir . basename($_FILES["file"]["name"]);
+
+				if(move_uploaded_file($_FILES["file"]["tmp_name"], '../'.$target_file)){
+
+					$this->model_catalog_category->editFile($this->request->get['category_id'], $target_file);
+				}
+			}
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -453,11 +470,11 @@ class ControllerCatalogCategory extends Controller {
 			$data['thumb'] = $this->model_tool_image->resize('no_image.png', 100, 100);
 		}
 
-		$data['placeholder'] = $this->model_tool_image->resize('no_image.png', 100, 100);
-
 		if(!empty($category_info['file'])){
 			$data['file'] = 'http://'.$_SERVER['HTTP_HOST']'..'.$category_info['file'];
 		}
+
+		$data['placeholder'] = $this->model_tool_image->resize('no_image.png', 100, 100);
 
 		if (isset($this->request->post['top'])) {
 			$data['top'] = $this->request->post['top'];
