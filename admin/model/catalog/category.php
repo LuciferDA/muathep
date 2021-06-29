@@ -341,4 +341,11 @@ class ModelCatalogCategory extends Model {
 
 		return $query->row['total'];
 	}
+
+	public function editFile($category_id, $target_file) {
+
+		if (isset($target_file)) {
+			$this->db->query("UPDATE " . DB_PREFIX . "category SET file = '" . $target_file . "' WHERE category_id = '" . (int)$category_id . "'");
+		}
+	}
 }

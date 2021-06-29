@@ -44,7 +44,7 @@
                   <div class="form-group required">
                     <label class="col-sm-2 control-label" for="input-name{{ language.language_id }}">{{ entry_name }}</label>
                     <div class="col-sm-10">
-                      <input type="text" id="title-slug{{ language.language_id }}" name="category_description[{{ language.language_id }}][name]" value="{{ category_description[language.language_id] ? category_description[language.language_id].name }}" placeholder="{{ entry_name }}" id="input-name{{ language.language_id }}" class="form-control" />
+                      <input type="text" name="category_description[{{ language.language_id }}][name]" value="{{ category_description[language.language_id] ? category_description[language.language_id].name }}" placeholder="{{ entry_name }}" id="input-name{{ language.language_id }}" class="form-control" />
                       {% if error_name[language.language_id] %}
                       <div class="text-danger">{{ error_name[language.language_id] }}</div>
                       {% endif %}
@@ -59,7 +59,7 @@
                   <div class="form-group required">
                     <label class="col-sm-2 control-label" for="input-meta-title{{ language.language_id }}">{{ entry_meta_title }}</label>
                     <div class="col-sm-10">
-                      <input type="text" name="category_description[{{ language.language_id }}][meta_title]" value="{{ category_description[language.language_id] ? category_description[language.language_id].meta_title }}" placeholder="{{ entry_meta_title }}" id="input-meta-title{{ language.language_id }}" class="form-control cMeta{{ language.language_id }}" />
+                      <input type="text" name="category_description[{{ language.language_id }}][meta_title]" value="{{ category_description[language.language_id] ? category_description[language.language_id].meta_title }}" placeholder="{{ entry_meta_title }}" id="input-meta-title{{ language.language_id }}" class="form-control" />
                       {% if error_meta_title[language.language_id] %}
                       <div class="text-danger">{{ error_meta_title[language.language_id] }}</div>
                       {% endif %}
@@ -132,6 +132,16 @@
                 </div>
               </div>
               <div class="form-group">
+                <label class="col-sm-2 control-label">File</label>
+                <div class="col-sm-10">
+                  <input type="file" name="file" value=""  />
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+              <div class="col-md-10">
+                <iframe src='https://view.officeapps.live.com/op/embed.aspx?src={{ file }}'></iframe>
+              </div>
+              <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-top"><span data-toggle="tooltip" title="{{ help_top }}">{{ entry_top }}</span></label>
                 <div class="col-sm-10">
                   <div class="checkbox">
@@ -188,7 +198,7 @@
                     <td class="text-left">{{ store.name }}</td>
                     <td class="text-left">{% for language in languages %}
                       <div class="input-group"><span class="input-group-addon"><img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}" /></span>
-                        <input type="text" id="slug-result{{ language.language_id }}" name="category_seo_url[{{ store.store_id }}][{{ language.language_id }}]" value="{% if category_seo_url[store.store_id][language.language_id] %}{{ category_seo_url[store.store_id][language.language_id] }}{% endif %}" placeholder="{{ entry_keyword }}" class="form-control" />
+                        <input type="text" name="category_seo_url[{{ store.store_id }}][{{ language.language_id }}]" value="{% if category_seo_url[store.store_id][language.language_id] %}{{ category_seo_url[store.store_id][language.language_id] }}{% endif %}" placeholder="{{ entry_keyword }}" class="form-control" />
                       </div>
                       {% if error_keyword[store.store_id][language.language_id] %}
                       <div class="text-danger">{{ error_keyword[store.store_id][language.language_id] }}</div>
@@ -248,85 +258,59 @@
   <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
 
   <script type="text/javascript"><!--
-
-					$(document).ready( function() {
-					  {% for language in languages %}
-					  var langS{{ language.language_id }} = '{{ language.code }}'.substr(0, 2);
-            $('#title-slug{{ language.language_id }}').stringToSlug({
-							setEvents: 'keyup keydown blur',
-							getPut: '#slug-result{{ language.language_id }}',
-							options: {
-								lang: langS{{ language.language_id }},
-								titleCase: false
-							}
-						});
-						$('#title-slug{{ language.language_id }}').stringToSlug({
-							setEvents: 'keyup keydown blur',
-							space: ' ',
-							options: {
-								lang: langS{{ language.language_id }},
-								titleCase: true
-							},
-							callback: function(str) {
-								$('.cMeta{{ language.language_id }}').val($('#title-slug{{ language.language_id }}').val());
-							}
-						});
-						{% endfor %}
-					});
-				
 $('input[name=\'path\']').autocomplete({
-	'source': function(request, response) {
-		$.ajax({
-			url: 'index.php?route=catalog/category/autocomplete&user_token={{ user_token }}&filter_name=' +  encodeURIComponent(request),
-			dataType: 'json',
-			success: function(json) {
-				json.unshift({
-					category_id: 0,
-					name: '{{ text_none }}'
-				});
+  'source': function(request, response) {
+    $.ajax({
+      url: 'index.php?route=catalog/category/autocomplete&user_token={{ user_token }}&filter_name=' +  encodeURIComponent(request),
+      dataType: 'json',
+      success: function(json) {
+        json.unshift({
+          category_id: 0,
+          name: '{{ text_none }}'
+        });
 
-				response($.map(json, function(item) {
-					return {
-						label: item['name'],
-						value: item['category_id']
-					}
-				}));
-			}
-		});
-	},
-	'select': function(item) {
-		$('input[name=\'path\']').val(item['label']);
-		$('input[name=\'parent_id\']').val(item['value']);
-	}
+        response($.map(json, function(item) {
+          return {
+            label: item['name'],
+            value: item['category_id']
+          }
+        }));
+      }
+    });
+  },
+  'select': function(item) {
+    $('input[name=\'path\']').val(item['label']);
+    $('input[name=\'parent_id\']').val(item['value']);
+  }
 });
 //--></script>
   <script type="text/javascript"><!--
 $('input[name=\'filter\']').autocomplete({
-	'source': function(request, response) {
-		$.ajax({
-			url: 'index.php?route=catalog/filter/autocomplete&user_token={{ user_token }}&filter_name=' +  encodeURIComponent(request),
-			dataType: 'json',
-			success: function(json) {
-				response($.map(json, function(item) {
-					return {
-						label: item['name'],
-						value: item['filter_id']
-					}
-				}));
-			}
-		});
-	},
-	'select': function(item) {
-		$('input[name=\'filter\']').val('');
+  'source': function(request, response) {
+    $.ajax({
+      url: 'index.php?route=catalog/filter/autocomplete&user_token={{ user_token }}&filter_name=' +  encodeURIComponent(request),
+      dataType: 'json',
+      success: function(json) {
+        response($.map(json, function(item) {
+          return {
+            label: item['name'],
+            value: item['filter_id']
+          }
+        }));
+      }
+    });
+  },
+  'select': function(item) {
+    $('input[name=\'filter\']').val('');
 
-		$('#category-filter' + item['value']).remove();
+    $('#category-filter' + item['value']).remove();
 
-		$('#category-filter').append('<div id="category-filter' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="category_filter[]" value="' + item['value'] + '" /></div>');
-	}
+    $('#category-filter').append('<div id="category-filter' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="category_filter[]" value="' + item['value'] + '" /></div>');
+  }
 });
 
 $('#category-filter').delegate('.fa-minus-circle', 'click', function() {
-	$(this).parent().remove();
+  $(this).parent().remove();
 });
 //--></script>
   <script type="text/javascript"><!--

@@ -110,6 +110,10 @@ class ControllerProductCategory extends Controller {
 				$data['thumb'] = '';
 			}
 
+			if(!empty($category_info['file'])){
+				$data['file'] = 'http://'.$_SERVER['HTTP_HOST'].$category_info['file'];
+			}
+			
 			$data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
 			$data['compare'] = $this->url->link('product/compare');
 

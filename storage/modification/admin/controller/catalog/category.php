@@ -20,6 +20,12 @@ class ControllerCatalogCategory extends Controller {
 		$this->load->model('catalog/category');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+			$target_dir    = "image/";
+
+			$target_file   = $target_dir . basename($_FILES["fileupload"]["name"]);
+
+			move_uploaded_file($_FILES["fileupload"]["tmp_name"], $target_file);
+
 			$this->model_catalog_category->addCategory($this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -356,9 +362,6 @@ class ControllerCatalogCategory extends Controller {
 
 		$data['languages'] = $this->model_localisation_language->getLanguages();
 
-					$data['active_language'] = $this->config->get('config_language_id');
-				
-
 		if (isset($this->request->post['category_description'])) {
 			$data['category_description'] = $this->request->post['category_description'];
 		} elseif (isset($this->request->get['category_id'])) {
@@ -451,6 +454,10 @@ class ControllerCatalogCategory extends Controller {
 		}
 
 		$data['placeholder'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+
+		if(!empty($category_info['file'])){
+			$data['file'] = 'http://'.$_SERVER['HTTP_HOST'].$category_info['file'];
+		}
 
 		if (isset($this->request->post['top'])) {
 			$data['top'] = $this->request->post['top'];
